@@ -52,7 +52,15 @@ export default function Hero() {
           </div>
 
           <div className="flex w-full flex-col gap-3 mt-4 sm:mt-6 sm:w-auto sm:flex-row sm:flex-wrap sm:gap-4">
-            <Button size="lg" className="w-full bg-white text-black hover:bg-gray-200 group sm:w-auto">
+            <Button
+              size="lg"
+              onClick={() =>
+                document.getElementById("projects")?.scrollIntoView({
+                  behavior: "smooth",
+                })
+              }
+              className="w-full bg-white text-black hover:bg-gray-200 group sm:w-auto"
+            >
               View Projects
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
