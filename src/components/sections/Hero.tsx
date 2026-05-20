@@ -60,7 +60,7 @@ export default function Hero() {
               variant="outline"
               size="lg"
               className="w-full border-white/20 hover:bg-white/10 group sm:w-auto"
-              onClick={() => window.open("C:/Vaibhav_Panchal.pdf", "_blank")}
+              onClick={() => window.open("/Vaibhav_Panchal.pdf", "_blank")}
             >
               <Download className="mr-2 w-4 h-4 group-hover:-translate-y-1 transition-transform" />
               Download Resume
