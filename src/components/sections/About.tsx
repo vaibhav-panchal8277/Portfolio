@@ -13,44 +13,44 @@ const stats = [
 
 export default function About() {
   return (
-    <section id="about" className="py-24 relative">
-      <div className="container mx-auto px-6">
+    <section id="about" className="py-16 sm:py-20 lg:py-24 relative">
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="mb-12 text-center"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">About <span className="text-blue-500">Me</span></h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">About <span className="text-blue-500">Me</span></h2>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full"></div>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={false}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <Card className="bg-white/5 border-white/10 backdrop-blur-xl p-8 relative overflow-hidden group">
+            <Card className="bg-white/5 border-white/10 backdrop-blur-xl p-5 sm:p-8 relative overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <p className="text-lg text-gray-300 leading-relaxed relative z-10">
-                Aspiring Software Developer and current Jr. AI/ML Developer at TestGrid.io. I completed my Master’s in Software Engineering at L.D. College of Engineering, where I specialized in Artificial Intelligence, Machine Learning, Data Science, and Image Processing. My background includes developing AI-driven automation, a frontend web development internship at Techreale (React JS), and building a PHP-based School Management System for the SSIP program. When I&apos;m not coding, I enjoy gaming, music, and exploring new tech. Let&apos;s connect!
+              <p className="text-base sm:text-lg text-gray-300 leading-relaxed relative z-10">
+                Aspiring Software Developer and current Jr. AI/ML Developer at TestGrid.io. I completed my Master&apos;s in Software Engineering at L.D. College of Engineering, where I specialized in Artificial Intelligence, Machine Learning, Data Science, and Image Processing. My background includes developing AI-driven automation, a frontend web development internship at Techreale (React JS), and building a PHP-based School Management System for the SSIP program. When I&apos;m not coding, I enjoy gaming, music, and exploring new tech. Let&apos;s connect!
               </p>
             </Card>
           </motion.div>
 
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
+                initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <Card className="bg-white/5 border-white/10 backdrop-blur-md p-6 text-center hover:bg-white/10 transition-colors group">
+                <Card className="bg-white/5 border-white/10 backdrop-blur-md p-5 sm:p-6 text-center hover:bg-white/10 transition-colors group">
                   <div className="mx-auto w-12 h-12 bg-blue-500/20 text-blue-400 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     <stat.icon className="w-6 h-6" />
                   </div>

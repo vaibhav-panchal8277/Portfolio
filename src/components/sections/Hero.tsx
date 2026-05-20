@@ -7,32 +7,32 @@ import { Badge } from "@/components/ui/badge";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center pt-24 pb-16 sm:pt-28 sm:pb-20 overflow-hidden">
       {/* Background gradients */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-purple-600/20 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute top-1/2 left-1/2 h-[22rem] w-[22rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-600/20 blur-[100px] pointer-events-none sm:h-[600px] sm:w-[600px] sm:blur-[120px]"></div>
+      <div className="absolute top-1/4 right-1/4 h-64 w-64 rounded-full bg-purple-600/20 blur-[80px] pointer-events-none sm:h-[400px] sm:w-[400px] sm:blur-[100px]"></div>
 
-      <div className="container mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10 grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
+          initial={false}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex flex-col items-start gap-6"
+          className="flex flex-col items-start gap-5 sm:gap-6"
         >
-          <Badge variant="glow" className="px-3 py-1 text-sm border-blue-500/50 bg-blue-500/10 text-blue-300 backdrop-blur-md flex items-center gap-2">
+          <Badge variant="glow" className="max-w-full whitespace-normal px-3 py-1 text-xs sm:text-sm leading-relaxed border-blue-500/50 bg-blue-500/10 text-blue-300 backdrop-blur-md flex items-center gap-2">
             <Sparkles className="w-4 h-4" /> Junior AI/ML Developer @ TestGrid Labs Inc.
           </Badge>
 
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-tight break-words">
             Hi, I&apos;m <br />
             <span className="text-gradient">Vaibhav Panchal</span>
           </h1>
 
-          <h2 className="text-xl md:text-2xl text-gray-300 font-medium">
+          <h2 className="text-lg sm:text-xl md:text-2xl text-gray-300 font-medium leading-relaxed">
             AI/ML Enthusiast | Computer Vision | Deep Learning | Automation | Research Enthusiast
           </h2>
 
-          <p className="text-lg text-gray-400 max-w-lg">
+          <p className="text-base sm:text-lg text-gray-400 max-w-lg leading-relaxed">
             Building AI-powered tools, intelligent systems, and research-driven products that solve real-world problems.
           </p>
 
@@ -40,7 +40,7 @@ export default function Hero() {
             {["Python", "FastAPI", "AI", "Machine Learning", "React", "Research"].map((badge, i) => (
               <motion.div
                 key={badge}
-                initial={{ opacity: 0, y: 10 }}
+                initial={false}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 + i * 0.1 }}
               >
@@ -51,15 +51,15 @@ export default function Hero() {
             ))}
           </div>
 
-          <div className="flex flex-wrap gap-4 mt-6">
-            <Button size="lg" className="bg-white text-black hover:bg-gray-200 group">
+          <div className="flex w-full flex-col gap-3 mt-4 sm:mt-6 sm:w-auto sm:flex-row sm:flex-wrap sm:gap-4">
+            <Button size="lg" className="w-full bg-white text-black hover:bg-gray-200 group sm:w-auto">
               View Projects
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button
               variant="outline"
               size="lg"
-              className="border-white/20 hover:bg-white/10 group"
+              className="w-full border-white/20 hover:bg-white/10 group sm:w-auto"
               onClick={() => window.open("/VAIBHAV_RESUME.pdf", "_blank")}
             >
               <Download className="mr-2 w-4 h-4 group-hover:-translate-y-1 transition-transform" />
@@ -69,7 +69,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={false}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.2 }}
           className="relative hidden lg:flex justify-center items-center"
@@ -106,7 +106,7 @@ export default function Hero() {
       <motion.div
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-gray-400"
+        className="absolute bottom-5 sm:bottom-10 left-1/2 -translate-x-1/2 text-gray-400"
       >
         <a href="#about" className="flex flex-col items-center gap-2 hover:text-white transition-colors">
           <span className="text-xs uppercase tracking-widest font-medium">Scroll</span>

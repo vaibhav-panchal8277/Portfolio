@@ -7,31 +7,31 @@ import { Button } from "@/components/ui/button";
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
+    <section id="contact" className="py-16 sm:py-20 lg:py-24 relative overflow-hidden">
       {/* Background glow */}
       <div className="absolute bottom-0 right-0 w-full h-1/2 bg-gradient-to-t from-blue-900/10 to-transparent pointer-events-none"></div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16 text-center"
+          className="mb-10 sm:mb-16 text-center"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">Let&apos;s <span className="text-blue-500">Connect</span></h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Let&apos;s <span className="text-blue-500">Connect</span></h2>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 mx-auto rounded-full"></div>
           <p className="mt-6 text-gray-400 max-w-lg mx-auto">
             Whether you have a question, a project idea, or just want to say hi, my inbox is always open.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-5 gap-12 max-w-5xl mx-auto">
+        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 max-w-5xl mx-auto">
           {/* Contact Info */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={false}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-2 space-y-8"
+            className="lg:col-span-2 space-y-6 sm:space-y-8"
           >
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 bg-blue-500/10 text-blue-400 rounded-xl flex items-center justify-center shrink-0">
@@ -39,7 +39,7 @@ export default function Contact() {
               </div>
               <div>
                 <h4 className="text-white font-bold text-lg mb-1">Email</h4>
-                <a href="mailto:vaibhavpanchal1808@gmail.com" className="text-gray-400 hover:text-blue-400 transition-colors">vaibhavpanchal1808@gmail.com</a>
+                <a href="mailto:vaibhavpanchal1808@gmail.com" className="text-gray-400 hover:text-blue-400 transition-colors break-all">vaibhavpanchal1808@gmail.com</a>
               </div>
             </div>
 
@@ -78,13 +78,13 @@ export default function Contact() {
 
           {/* Contact Form */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={false}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="lg:col-span-3"
           >
-            <form className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-md flex flex-col gap-6">
-              <div className="grid md:grid-cols-2 gap-6">
+            <form className="bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-8 backdrop-blur-md flex flex-col gap-5 sm:gap-6">
+              <div className="grid md:grid-cols-2 gap-5 sm:gap-6">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium text-gray-300">Name</label>
                   <input
@@ -125,7 +125,7 @@ export default function Contact() {
                 ></textarea>
               </div>
 
-              <Button size="lg" variant="glow" className="w-full py-6 text-lg font-bold group">
+              <Button size="lg" variant="glow" className="w-full py-6 text-base sm:text-lg font-bold group">
                 Send Message
                 <Send className="w-5 h-5 ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               </Button>

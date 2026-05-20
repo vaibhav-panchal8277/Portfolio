@@ -48,15 +48,15 @@ const experiences = [
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 relative">
-      <div className="container mx-auto px-6">
+    <section id="experience" className="py-16 sm:py-20 lg:py-24 relative">
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-20 text-center"
+          className="mb-12 sm:mb-20 text-center"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">Journey & <span className="text-emerald-500">Experience</span></h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Journey & <span className="text-emerald-500">Experience</span></h2>
           <div className="w-20 h-1 bg-gradient-to-r from-emerald-500 to-teal-600 mx-auto rounded-full"></div>
         </motion.div>
 
@@ -64,11 +64,11 @@ export default function Experience() {
           {/* Vertical glowing line */}
           <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500/50 via-teal-500/20 to-transparent -translate-x-1/2"></div>
 
-          <div className="space-y-12">
+          <div className="space-y-8 sm:space-y-12">
             {experiences.map((exp, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
+                initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
@@ -81,11 +81,11 @@ export default function Experience() {
 
                 {/* Content */}
                 <div className={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pl-12' : 'md:pr-12 text-left md:text-right'}`}>
-                  <div className="p-6 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-colors">
+                  <div className="p-5 sm:p-6 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-sm hover:bg-white/10 transition-colors">
                     <span className="inline-block py-1 px-3 rounded-full bg-white/5 text-emerald-400 text-xs font-bold tracking-wider mb-3">
                       {exp.date}
                     </span>
-                    <h3 className="text-xl font-bold text-white mb-1">{exp.title}</h3>
+                    <h3 className="text-lg sm:text-xl font-bold text-white mb-1 leading-snug">{exp.title}</h3>
                     <h4 className="text-gray-400 font-medium mb-4">{exp.company}</h4>
                     <p className="text-gray-300 text-sm leading-relaxed">
                       {exp.description}
