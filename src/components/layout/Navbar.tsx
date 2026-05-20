@@ -31,10 +31,10 @@ export default function Navbar() {
         scrolled ? "bg-background/80 backdrop-blur-md border-b border-white/10 shadow-lg" : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-6 h-20 flex items-center justify-between">
+      <div className="container mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
         <a href="#" className="flex items-center gap-2 group">
-          <Terminal className="w-8 h-8 text-blue-500 group-hover:text-purple-500 transition-colors" />
-          <span className="font-bold text-xl tracking-tighter text-white">VP.</span>
+          <Terminal className="w-7 h-7 sm:w-8 sm:h-8 text-blue-500 group-hover:text-purple-500 transition-colors" />
+          <span className="font-bold text-lg sm:text-xl tracking-tighter text-white">VP.</span>
         </a>
 
         {/* Desktop Nav */}
@@ -59,8 +59,10 @@ export default function Navbar() {
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden text-gray-300 hover:text-white"
+          className="md:hidden text-gray-300 hover:text-white p-2 -mr-2"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileMenuOpen}
         >
           {mobileMenuOpen ? <X /> : <Menu />}
         </button>
@@ -69,9 +71,9 @@ export default function Navbar() {
       {/* Mobile Nav */}
       {mobileMenuOpen && (
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
-          className="md:hidden absolute top-20 left-0 w-full bg-background/95 backdrop-blur-lg border-b border-white/10"
+          className="md:hidden absolute top-16 sm:top-20 left-0 w-full bg-background/95 backdrop-blur-lg border-b border-white/10"
         >
           <ul className="flex flex-col p-6 gap-4">
             {navItems.map((item) => (

@@ -47,33 +47,33 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24 relative">
-      <div className="container mx-auto px-6">
+    <section id="projects" className="py-16 sm:py-20 lg:py-24 relative">
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16 text-center"
+          className="mb-10 sm:mb-16 text-center"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">Featured <span className="text-blue-500">Work</span></h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Featured <span className="text-blue-500">Work</span></h2>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 mx-auto rounded-full"></div>
         </motion.div>
 
-        <div className="space-y-24">
+        <div className="space-y-16 sm:space-y-20 lg:space-y-24">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 40 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.7 }}
-              className={`flex flex-col ${index % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 items-center group`}
+              className={`flex flex-col ${index % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-6 sm:gap-10 lg:gap-12 items-center group`}
             >
               {/* Image Side */}
               <div className="w-full lg:w-1/2 relative perspective-1000">
                 <div className="relative rounded-2xl overflow-hidden border border-white/10 glass-card transition-all duration-500 group-hover:rotate-y-2 group-hover:rotate-x-2 group-hover:shadow-2xl group-hover:shadow-blue-500/20">
                   <div className="absolute inset-0 bg-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity z-10 mix-blend-overlay"></div>
-                  <div className="relative w-full h-[350px]">
+                  <div className="relative h-56 w-full sm:h-72 lg:h-[350px]">
                     <Image
                       src={project.image}
                       alt={project.title}
@@ -87,13 +87,15 @@ export default function Projects() {
               </div>
 
               {/* Content Side */}
-              <div className="w-full lg:w-1/2 flex flex-col gap-6">
+              <div className="w-full lg:w-1/2 flex flex-col gap-5 sm:gap-6">
                 <div>
-                  <h3 className="text-3xl font-bold mb-2 text-white">{project.title}</h3>
-                  <p className="text-blue-400 font-medium">Problem: {project.problem}</p>
+                  <h3 className="text-2xl sm:text-3xl font-bold mb-2 text-white break-words">{project.title}</h3>
+                  {project.problem && (
+                    <p className="text-sm sm:text-base text-blue-400 font-medium leading-relaxed">Problem: {project.problem}</p>
+                  )}
                 </div>
 
-                <div className="p-6 rounded-xl bg-white/5 border border-white/5 backdrop-blur-sm relative overflow-hidden">
+                <div className="p-5 sm:p-6 rounded-xl bg-white/5 border border-white/5 backdrop-blur-sm relative overflow-hidden">
                   <div className="absolute top-0 left-0 w-1 h-full bg-blue-500"></div>
                   <p className="text-gray-300 leading-relaxed">
                     {project.description}
@@ -108,13 +110,13 @@ export default function Projects() {
                   ))}
                 </div>
 
-                <div className="flex gap-4 mt-2">
-                  <Button variant="glow" asChild>
+                <div className="flex flex-col gap-3 mt-2 sm:flex-row sm:flex-wrap sm:gap-4">
+                  <Button variant="glow" className="w-full sm:w-auto" asChild>
                     <a href={project.live} target="_blank" rel="noreferrer">
                       <ExternalLink className="w-4 h-4 mr-2" /> Live Demo
                     </a>
                   </Button>
-                  <Button variant="outline" className="border-white/20 hover:bg-white/10" asChild>
+                  <Button variant="outline" className="w-full border-white/20 hover:bg-white/10 sm:w-auto" asChild>
                     <a href={project.github} target="_blank" rel="noreferrer">
                       <Github className="w-4 h-4 mr-2" /> Source Code
                     </a>
