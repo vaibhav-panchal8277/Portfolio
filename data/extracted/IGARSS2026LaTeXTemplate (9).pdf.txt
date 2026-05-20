@@ -1,0 +1,465 @@
+CHANNEL ATTENTION FOR ORIENTED
+OBJECT DETECTION IN REMOTE SENSING
+IMAGES
+Vaibhav Panchal
+Gujarat Technological University, India
+vaibhavpanchal1808@gmail.comMaitrik K. Shah
+Gujarat Technological University, India
+maitrikshah.ce@gmail.com
+Abstract—Detecting small objects in remote sensing images is
+challenging due to complex backgrounds and scale variations.
+YOLO-based detectors are widely used for efficient end-to-end
+oriented object detection. In this study, the Efficient Channel
+Attention (ECA) module is integrated into the YOLOv11s-OBB
+framework to enhance channel-wise feature representation. The
+proposed modification is evaluated on the DIOR-R (Rotated-
+Bounding-Box Aerial Object Detection Dataset) dataset using
+standard oriented object detection metrics. Experimental re-
+sults on the DIOR-R dataset demonstrate consistent improve-
+ments across all evaluation metrics, including Precision, Recall,
+(mAP 50), and (mAP 50–95 ), confirming the effectiveness of the pro-
+posed ECA-enhanced framework for oriented object detection.
+Index Terms—YOLOv11-OBB, remote sensing images, small
+object detection, channel attention, Efficient Channel Attention.
+I. INTRODUCTION
+Object detection in remote sensing imagery plays a critical
+role in many real-world applications, including urban infras-
+tructure analysis [1], traffic supervision [2], environmental
+monitoring [3], and security-related [4] tasks. With the rapid
+advancement of high-resolution aerial and satellite imaging
+technologies, large-scale remote sensing datasets have become
+increasingly available, enabling the widespread adoption of
+deep learning methods for automated object detection. Despite
+these advances, detecting objects in remote sensing imagery
+remains challenging due to several intrinsic characteristics of
+aerial scenes. Compared with natural images, remote sensing
+data often contain complex backgrounds, large variations in
+object scale, dense spatial distributions, and objects with
+arbitrary orientations, all of which significantly increase the
+difficulty of reliable detection. [5].
+To better represent the orientation characteristics of objects
+in aerial imagery, oriented object detection has emerged as
+an important research direction. Unlike conventional object
+detectors that employ horizontal bounding boxes, oriented
+object detection methods utilize rotated bounding boxes to
+more accurately capture object orientation and shape. Early
+studies, such as rotation-based proposal approaches [6–8],
+demonstrated that explicitly modeling orientation information
+can significantly improve detection robustness in aerial scenes
+[6, 8]. Subsequent research introduced feature transformation
+and alignment strategies to further enhance localization accu-
+racy under complex imaging conditions [7].Most early oriented object detection methods adopt a two-
+stage detection paradigm [9, 10, 6]. In the first stage, candidate
+object regions are generated using region proposal mecha-
+nisms, while in the second stage, these proposals are refined
+through classification and bounding box regression. This two-
+stage design allows accurate localization and orientation mod-
+eling but often incurs higher computational cost and limits
+efficiency when applied to large-scale remote sensing datasets.
+Alongside these developments, one-stage detection
+paradigms have become increasingly attractive due to their
+computational efficiency and simplified detection pipelines.
+Frameworks such as SSD (Single Shot MultiBox Detector)
+[11] and YOLO [12] directly predict object categories and
+bounding boxes without a separate proposal stage, making
+them well suited for large-scale remote sensing datasets [11].
+Recent studies adapting YOLO-based architectures for aerial
+imagery have shown that detection performance is highly
+influenced by architectural design choices, especially when
+balancing detection accuracy with computational efficiency.
+[12].
+Despite their efficiency, YOLO-based detectors still face
+challenges in effectively capturing discriminative features for
+small and densely distributed objects, which are common in
+remote sensing imagery. In such scenarios, informative feature
+channels may not be sufficiently emphasized during feature
+extraction, which can reduce detection reliability in complex
+scenes. Attention mechanisms have shown strong potential for
+improving feature selectivity by enabling neural networks to
+focus on informative features while suppressing less relevant
+responses. In particular, channel attention mechanisms adap-
+tively recalibrate feature responses across channels, enhancing
+the representation of semantically meaningful features with
+minimal computational overhead. However, despite their ef-
+fectiveness in many deep learning architectures, the impact of
+channel attention mechanisms within YOLO-based oriented
+object detection frameworks remains insufficiently explored.
+[13–15]
+This study addresses these limitations by enhancing the
+YOLOv11s-OBB architecture through the integration of an Ef-
+ficient Channel Attention (ECA) [16] module. The ECA mech-
+anism enables adaptive channel-wise feature recalibration,
+allowing the network to emphasize informative features while
+suppressing less relevant responses. Due to its lightweight
+design, the ECA module introduces minimal computational
+overhead while improving feature representation for small
+object detection in remote sensing imagery.
+To evaluate the effectiveness of the proposed approach, ex-
+periments are conducted on the DIOR-R dataset, a large-scale
+remote sensing benchmark containing oriented bounding box
+annotations for objects with arbitrary orientations [17]. The
+baseline YOLOv11s-OBB detector and the ECA-enhanced
+variant are trained under identical experimental conditions to
+ensure a fair comparison.
+The main contributions of this work are summarized as
+follows:
+•We introduce a lightweight channel attention enhance-
+ment for the YOLOv11s-OBB architecture by integrating
+the Efficient Channel Attention (ECA) module to improve
+feature representation for oriented object detection.
+•We perform a controlled experimental study evaluating
+the impact of channel attention on small object detection
+in remote sensing imagery.
+•We demonstrate that the proposed ECA-enhanced
+YOLOv11-OBB improves detection accuracy on the
+DIOR-R dataset while maintaining computational effi-
+ciency.
+II. RELATEDWORK
+Object detection in remote sensing imagery has been widely
+studied due to its importance in aerial scene understanding.
+With the development of large-scale remote sensing datasets
+such as DOTA and DIOR-R, significant progress has been
+made in detecting objects with arbitrary orientations [5, 17].
+Existing research in this area can generally be categorized into
+oriented object detection frameworks and feature representa-
+tion enhancement methods.
+Early studies focused on oriented object detection tech-
+niques that explicitly model object orientation in aerial images.
+For example, R2CNN introduced rotational region propos-
+als to improve orientation robustness in detection tasks [6].
+Subsequent works further explored rotation-aware detection
+strategies by incorporating rotated bounding boxes into the
+detection pipeline. Methods based on rotation proposal gen-
+eration demonstrated the effectiveness of representing objects
+using oriented bounding boxes to better capture their geomet-
+ric properties [8]. Later, RoI transformation approaches were
+proposed to align extracted features with object orientation,
+enabling improved localization accuracy in complex aerial
+scenes [7]. These methods established the importance of
+orientation-aware representations for remote sensing object
+detection.
+Alongside these developments, one-stage object detectors
+have gained increasing attention due to their efficiency and
+simplified detection pipelines. Methods such as the Single
+Shot MultiBox Detector (SSD) directly predict object locations
+and class labels without requiring region proposal stages,
+making them suitable for large-scale detection tasks [11].
+Building upon this idea, the YOLO family of detectors furtheradvanced one-stage detection by integrating feature extraction
+and prediction into a unified network architecture. Recent
+studies adapting YOLO-based detectors for remote sensing im-
+agery have emphasized the importance of architectural design
+choices in balancing detection accuracy and computational
+efficiency [12].
+Recent studies have investigated various strategies to en-
+hance feature representation in object detection networks.
+Context-aware detection approaches utilize surrounding scene
+information to improve detection performance in complex
+environments. For example, CAD-Net incorporates contextual
+cues to better detect objects in remote sensing imagery [10].
+Other works have explored feature refinement techniques to
+strengthen discriminative feature representations and improve
+robustness in challenging scenes [18]. Additionally, advanced
+feature aggregation and upsampling methods have been pro-
+posed to preserve spatial details during multi-scale feature
+fusion. For instance, CARAFE introduces a content-aware
+feature reassembly mechanism that improves feature recon-
+struction during upsampling operations [19].
+Attention mechanisms have also been adopted to improve
+feature representation in deep neural networks. Channel at-
+tention modules such as Squeeze-and-Excitation networks
+and Efficient Channel Attention networks enable adaptive
+reweighting of feature channels, improving the network’s
+ability to focus on informative features while suppressing
+irrelevant responses.
+Despite these advances, the integration of lightweight chan-
+nel attention mechanisms within YOLO-based oriented object
+detection frameworks has received limited investigation. In
+particular, the influence of channel-wise attention on small
+object detection in remote sensing imagery remains insuffi-
+ciently explored. To address this gap, this work investigates
+the integration of an ECA module into the YOLOv11s-OBB
+architecture and evaluates its impact on oriented object detec-
+tion performance.
+III. METHODOLOGY
+This section presents the experimental procedure adopted
+to examine the role of channel-level feature modulation in a
+YOLO-based oriented object detection model. A controlled
+evaluation strategy is employed, by augmenting the baseline
+architecture with the Efficient Channel Attention (ECA) mech-
+anism and its influence on detection outcomes is assessed.
+A. Baseline Detector
+The baseline model employed in this study is YOLOv11s-
+OBB [12], a one-stage oriented object detector designed
+to predict rotated bounding boxes directly from multi-scale
+feature representations. The architecture consists of three main
+components: a convolutional backbone for feature extraction,
+a feature aggregation neck for multi-scale representation, and
+an oriented detection head responsible for classification and
+bounding box regression. This baseline configuration serves
+as the reference model for all experiments.
+B. Efficient Channel Attention Integration
+To enhance the quality of feature representations, a channel-
+level modulation strategy is adopted within the baseline detec-
+tion network. This strategy operates by modeling relationships
+among feature channels using a compact convolutional opera-
+tion, allowing channel importance to be learned without intro-
+ducing dimensional compression or significant computational
+overhead. Through this process, channels carrying informative
+semantic cues are strengthened, whereas less contributive
+responses are comparatively suppressed. This mechanism is
+particularly beneficial for remote sensing imagery, where small
+objects often exhibit weak visual signatures and may be easily
+obscured by complex background patterns.
+In the proposed configuration, this channel modulation
+mechanism is embedded into selected convolutional layers of
+the YOLOv11s-OBB network to adjust intermediate feature
+responses. All remaining components of the architecture are
+preserved in their original form, ensuring that any observed
+performance variations can be attributed solely to the inclusion
+of this channel-level modulation approach.
+Fig. 1. YOLO11-ECA architecture
+Figure 1 presents the modified YOLOv11s-OBB architec-
+ture with the integrated ECA module. The attention mod-
+ule is embedded within selected convolutional layers of the
+backbone to refine intermediate feature representations without
+altering the overall network structure.
+C. Efficient Channel Attention Module
+Fig. 2. Block diagram of the Efficient Channel Attention (ECA) module.Figure 2 illustrates the internal structure of the Efficient
+Channel Attention (ECA) module. It captures local cross-
+channel interactions using global average pooling followed by
+a lightweight one-dimensional convolution and sigmoid acti-
+vation, enabling adaptive channel-wise feature recalibration.
+LetX∈RB×C×H×Wdenote the input feature map,
+whereB,C,H, andWrepresent the batch size, number of
+channels, height, and width, respectively. Figure 2 illustrates
+the workflow of the Efficient Channel Attention (ECA) mod-
+ule, which enhances feature representation by modeling local
+cross-channel dependencies in a lightweight manner.
+As shown in the figure, the process begins with global
+Average Pooling, which aggregates spatial information across
+each channel to produce a compact channel descriptor:
+zc=1
+HWHX
+i=1WX
+j=1Xc(i, j), c= 1, . . . , C.(1)
+The resulting channel descriptorz= [z 1, z2, . . . , z C]is then
+fed into a one-dimensional convolution layer that captures
+local channel interactions without dimensionality reduction:
+s=σ(Conv1D(z, k)),(2)
+whereσ(·)denotes the sigmoid activation function andkis
+the kernel size of the convolution.
+The kernel sizekis adaptively determined based on the
+channel dimension to balance receptive field size and compu-
+tational efficiency:
+k=log2(C) +b
+γ
+odd,(3)
+whereγandbare predefined constants and|·| oddensures that
+kis an odd integer.
+Finally, the attention weights are reshaped and applied to
+the input feature map using a residual-safe scaling operation:
+˜Xc=Xc·(1 +α·s c),(4)
+whereαcontrols the strength of the attention mechanism and
+˜Xcrepresents the refined output feature of thec-th channel.
+IV. EXPERIMENTALSETUP
+A. Dataset Description
+The DIOR-R [17] dataset contains over 18,000 high-
+resolution aerial images annotated with oriented bounding
+boxes across diverse object categories. It includes small and
+densely distributed objects such as vehicles, ships, and storage
+tanks, appearing under complex backgrounds and varying
+scales in urban, rural, and natural scenes.
+The dataset exhibits significant variations in object scale,
+orientation, and spatial distribution, making it suitable for
+evaluating oriented object detection performance. Following
+the official split, 18,770 images are used for training and
+2,347 for testing. All images are resized to 640 × 640 while
+preserving the original oriented annotations.
+B. Implementation Details
+The experiments are conducted using PyTorch with the
+Ultralytics YOLO training framework. The YOLOv11s-OBB
+detector is trained for 100 epochs with a batch size of 4
+using the AdamW optimizer and an initial learning rate of
+1×10−3. All images are resized to 640 × 640, and standard
+data augmentation is applied during training.
+To ensure a fair comparison, the ECA module is integrated
+only into selected backbone layers, while the remaining archi-
+tecture is unchanged. Training is performed using AMP on a
+single GPU.
+TABLE I
+TRAININGCONFIGURATION
+Parameter Value
+Epochs 100
+Batch size 4
+Optimizer AdamW
+Initial learning rate 0.001
+Image size 640
+AMP Enabled
+GPU 6 GB NVIDIA 4050
+V. RESULTSANDDISCUSSION
+This subsection reports a quantitative comparison between
+the baseline YOLOv11s-OBB detector and its ECA-enhanced
+counterpart on the DIOR-R dataset.
+Detection performance is assessed using Precision (P),
+Recall (R), mAP 50, and mAP 50–95 , as defined in previous
+Section. The numerical results obtained for both configurations
+are summarized in Table II.
+As observed from Table II, the introduction of the Efficient
+Channel Attention module leads to uniform improvements
+across all reported metrics. Precision shows an increase of 2.6
+points, suggesting more reliable classification behavior, while
+Recall improves by 4.3 points, indicating enhanced detection
+coverage. Gains are also evident in localization performance,
+with mAP 50and mAP 50–95 increasing by 3.8 and 3.4 points,
+respectively.
+In addition to the baseline comparison, Table II in-
+cludes recent approaches such as RC-YOLO and YOLOv11s-
+AMMFN. RC-YOLO enhances detection performance using
+C3k2-RE blocks and CARAFE-based feature upsampling,
+focusing on improving feature representation for small objects.
+YOLOv11s-AMMFN introduces advanced modules such as
+AMCC and DHEM to strengthen feature fusion and con-
+textual modeling. Compared to these methods, the proposed
+YOLOv11s-OBB + ECA achieves competitive or superior
+performance while maintaining a significantly lower compu-
+tational overhead and preserving the simplicity of the original
+architecture.
+Fig. 3 presents qualitative comparisons between Ground
+Truth, baseline YOLOv11s-OBB [12], and the proposed
+YOLOv11s-OBB + ECA on DIOR-R [17]. In the first row
+Fig. 3. Detection results on the DIOR-R dataset. (a) Ground Truth, (b)
+baseline YOLOv11s-OBB, and (c) proposed YOLOv11s-OBB + ECA.
+(dense storage tanks), the baseline produces overlapping, re-
+dundant, and low-confidence detections, whereas the ECA-
+enhanced model generates more accurate and confident bound-
+ing boxes with minimal duplication. In the second row (urban
+residential areas), the baseline misses small objects and shows
+inconsistent predictions, while the proposed model achieves
+better localization and more consistent detection of small
+and closely spaced objects. Overall, the integration of ECA
+improves feature discrimination, enabling robust performance
+in dense scenes, complex backgrounds, and varying object
+scales.
+Fig. 4. Zoomed-in comparison of detection results. The proposed YOLOv11s-
+OBB + ECA demonstrates improved localization accuracy and reduced false
+detections in dense regions compared to the baseline.
+To further highlight the effectiveness of the proposed
+method, Fig. 4 presents zoomed-in views of challenging
+regions. It can be observed that the baseline model suffers
+from overlapping predictions, missed detections, and lower
+confidence scores in densely populated areas. In contrast, the
+proposed YOLOv11s-OBB + ECA produces more accurate
+and consistent detections with clearer object boundaries. The
+improvements are particularly evident for small and closely
+spaced objects, where the proposed method significantly re-
+duces ambiguity and enhances detection reliability.
+Notably, the ECA module functions without reducing di-
+mensionality and adds only a minimal number of extra pa-
+TABLE II
+EVALUATION RESULTS ON THEDIOR-R DATASET
+Model Modification Dataset P R mAP 50 mAP 50–95 Time (ms) Params (M) GFLOPs
+YOLOv11s-OBB (Baseline) – DIOR-R 82.6 75.4 81.5 62.5 20.6 9.72 22.6
+RC-YOLO [20] C3k2-RE + CARAFE DIOR-R89.1675.27 81.67 – – – –
+YOLOv11s-AMMFN [21] AMCC + DHEM DIOR-R 81.1 75.4 80.5 59.8 30.7 18.45 36.6
+YOLOv11s-OBB + ECA ECA DIOR-R 85.279.7 85.3 65.921.7 9.72 22.9
+rameters, thus maintaining the original detection architecture
+and inference characteristics. Consequently, the performance
+improvements observed are due to better feature selectivity
+rather than increased architectural complexity.
+VI. CONCLUSION
+In this research, we investigate the impact of incorporating a
+lightweight channel attention mechanism into the YOLOv11s-
+OBB[12] framework for detecting oriented objects in remote
+sensing images. By integrating the Efficient Channel Attention
+(ECA) module into the baseline detector, our proposed method
+improves channel-wise feature representation while maintain-
+ing the original network architecture. Experimental results on
+the DIOR-R [17] dataset show consistent enhancements in
+various evaluation metrics, such as Precision, Recall, and mean
+Average Precision, indicating better detection completeness
+and localization accuracy. These results imply that channel-
+wise feature recalibration allows the model to more effec-
+tively utilize discriminative information, which is especially
+advantageous for identifying small and arbitrarily oriented
+objects in complex remote sensing environments. Notably, the
+proposed modification adds minimal architectural complexity
+and retains the efficiency of the baseline detector, making
+it suitable for practical remote sensing applications. Future
+research will explore other attention mechanisms, different
+integration strategies, and broader evaluations on larger-scale
+remote sensing datasets.
+REFERENCES
+[1] V . Mnih and G. E. Hinton, “Learning to detect roads in
+high-resolution aerial images,” inProceedings of the European
+Conference on Computer Vision (ECCV). Springer, 2010, pp.
+210–223.
+[2] J. Redmon, S. Divvala, R. Girshick, and A. Farhadi, “You only
+look once: Unified, real-time object detection,” inProceedings
+of the IEEE Conference on Computer Vision and Pattern Recog-
+nition (CVPR), 2016, pp. 779–788.
+[3] Z. Zhu and C. E. Woodcock, “Continuous monitoring of land
+disturbance using landsat time series,”Remote Sensing of En-
+vironment, vol. 144, pp. 152–171, 2014.
+[4] W. Li, V . Mahadevan, and N. Vasconcelos, “Anomaly detection
+and localization in crowded scenes,”IEEE Transactions on
+Pattern Analysis and Machine Intelligence, vol. 36, no. 1, pp.
+18–32, 2013.
+[5] G.-S. Xia, X. Bai, J. Ding, Z. Zhu, S. Belongie, J. Luo,
+M. Datcu, M. Pelillo, and L. Zhang, “Dota: A large-
+scale dataset for object detection in aerial images,”arXiv
+preprint arXiv:1711.10398, 2019. [Online]. Available: http:
+//arxiv.org/abs/1711.10398
+[6] Y . Jiang, X. Zhu, X. Wang, S. Yang, W. Li, H. Wang, P. Fu,
+and Z. Luo, “R2cnn: Rotational region cnn for orientationrobust scene text detection,”arXiv preprint arXiv:1706.09579,
+2017. [Online]. Available: http://arxiv.org/abs/1706.09579
+[7] J. Ding, N. Xue, Y . Long, G.-S. Xia, and Q. Lu, “Learning
+roi transformer for detecting oriented objects in aerial images,”
+arXiv preprint arXiv:1812.00155, 2018. [Online]. Available:
+http://arxiv.org/abs/1812.00155
+[8] J. Ma, W. Shao, H. Ye, L. Wang, H. Wang, Y . Zheng, and
+X. Xue, “Arbitrary-oriented scene text detection via rotation
+proposals,”IEEE Transactions on Multimedia, 2018. [Online].
+Available: http://arxiv.org/abs/1703.01086
+[9] R. Girshick, “Fast r-cnn,” 9 2015. [Online]. Available:
+http://arxiv.org/abs/1504.08083
+[10] G. Zhang, S. Lu, and W. Zhang, “Cad-net: A context-aware
+detection network for objects in remote sensing imagery,”
+arXiv preprint arXiv:1903.00857, 2019. [Online]. Available:
+http://arxiv.org/abs/1903.00857
+[11] W. Liu, D. Anguelov, D. Erhan, C. Szegedy, S. Reed, C.-Y .
+Fu, and A. C. Berg, “Ssd: Single shot multibox detector,” 12
+2016. [Online]. Available: http://arxiv.org/abs/1512.02325http:
+//dx.doi.org/10.1007/978-3-319-46448-0 2
+[12] R. Khanam and M. Hussain, “Yolov11: An overview of the key
+architectural enhancements,”arXiv preprint arXiv:2410.17725,
+2024. [Online]. Available: http://arxiv.org/abs/2410.17725
+[13] A. Vaswani, N. Shazeer, N. Parmar, J. Uszkoreit, L. Jones,
+A. N. Gomez, Ł. Kaiser, and I. Polosukhin, “Attention is all you
+need,” inAdvances in Neural Information Processing Systems
+(NeurIPS), 2017, pp. 5998–6008.
+[14] J. Hu, L. Shen, and G. Sun, “Squeeze-and-excitation networks,”
+inProceedings of the IEEE Conference on Computer Vision and
+Pattern Recognition (CVPR), 2018, pp. 7132–7141.
+[15] S. Woo, J. Park, J.-Y . Lee, and I. S. Kweon, “Cbam: Convolu-
+tional block attention module,” inProceedings of the European
+Conference on Computer Vision (ECCV), 2018, pp. 3–19.
+[16] Q. Wang, B. Wu, P. Zhu, P. Li, W. Zuo, and Q. Hu, “Eca-
+net: Efficient channel attention for deep convolutional neural
+networks,” inProceedings of the IEEE/CVF Conference on
+Computer Vision and Pattern Recognition (CVPR), 2020, pp.
+11 534–11 542.
+[17] K. Li, G. Wan, and G. Cheng, “Dior,” 2025. [Online].
+Available: https://dx.doi.org/10.21227/tq1e-nx82
+[18] D. Shi, C. Zhao, J. Shao, M. Feng, L. Luo, B. Ouyang,
+and J. Huang, “Context-aware enhanced feature refinement
+for small object detection with deformable detr,”Frontiers
+in Neurorobotics, vol. 19, 2025. [Online]. Available: https:
+//www.frontiersin.org/articles/10.3389/fnbot.2025.1588565/full
+[19] J. Wang, K. Chen, R. Xu, Z. Liu, C. C. Loy, and
+D. Lin, “Carafe: Content-aware reassembly of features,”
+arXiv preprint arXiv:1905.02188, 2019. [Online]. Available:
+http://arxiv.org/abs/1905.02188
+[20] H. Zhou, W. Yang, X. Yang, and J. Ren, “Rc-yolo: A modified
+yolo network for small oriented target detection in rs images,”
+Tech. Rep., 2025.
+[21] J. Qu, Z. Tang, L. Zhang, Y . Zhang, and Z. Zhang.

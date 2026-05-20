@@ -1,0 +1,64 @@
+Vaibhav  Panchal   
+M.E (Software  Engineering)    
+L.D. College Of  Engineering  
+FLAT NO.203, SUKRUT HEIGHTS, NEAR DAS HOSPITAL, 
+JAWAHAR ROAD, BILIMORA. 396321    
+ 
+vaibhavpanchal1808@gmail.com  | +91  8866231808  | Vaibhav  Panchal  |  vaibhav -panchal8277  
+ 
+Examination  University  Institute  Year  CGPA/%  
+Post -Graduation  GTU(SE)  LDCE  Ahmedabad  2024 -2026  7.95  
+Graduation  GTU(CS)  GDEC  Navsari  2020 -24 8.11  
+HSC  GSEB  AB School  2020  72 
+SSC GSEB  AB School  2018  69 
+ 
+ PROJECTS   
+• Movie  Recommendation  System  (Jan’25 -Feb’25)  
+◦ Developed a content -based movie recommender using the TMDB 5000 dataset. Engineered features by combining 
+metadata (genres, cast, director, overview, keywords) and applied TF -IDF vectorization with cosine similarity to 
+computed  movie  similarities.  Built  an interactive  front -end using  Streamlit  for real -time  recommendations.  Focused  on 
+scalability, clean UI, and accurate suggestions.  
+◦ Tech  Stack:  (Python,  Pandas,  NumPy,  Scikit -learn,  TF-IDF,  Cosine  Similarity,  Streamlit)  
+• Famyll:  A Comprehensive  Healthcare  Platform  (Jan’24 -March’24)  
+◦ Built a feature -rich web application that streamlines communication among Plan Owners, Members, Providers, and 
+Admins. Designed an intuitive, user -centric interface to manage healthcare coverage, claims, and preventive care. 
+Implemented  secure  authentication,  personalized  profiles,  and efficient  claim  processing  to enhance  the overall  patient - 
+provider  experience.  
+◦ Key Features: Secure login, password recovery, claim management, preventive exam scheduling, real -time provider - 
+member  communication.  
+◦ Tech  Stack : (React  Js, Node.js,  MongoDB,  Postman  API)  
+• Intrusion  Detection  System  using  Machine  & Deep  Learning  (April’25 -May’25)  
+◦ Designed  a hybrid  Intrusion  Detection  System  to classify  network  traffic  as benign  or attack  using  machine  learning  and 
+deep learning models. Implemented dimensionality reduction (PCA), feature compression (AutoEncoder), and 
+advanced  architectures  including  CNN,  BiLSTM,  and MultiHead  Attention.  Evaluated  models  using  precision,  recall,  and 
+F1-score for optimized accuracy and low false positives.  
+◦ Key Achievements: Achieved 98.4%+ accuracy with CNN + BiLSTM + MultiHead Attention, Integrated Random Forest 
+and SVM for comparative benchmarking, Applied PCA and feature selection to reduce computation and training time  
+◦ Tech  Stack:  (Python,  Scikit -learn,  TensorFlow/Keras,  NumPy,  Pandas,  Matplotlib)  
+ 
+TECHNICAL  SKILLS   
+• Programming  & Scripting  Languages : C, C++,  Java,  HTML,  CSS,  JavaScript,  Python,  PHP.  
+• Tools  & Libraries : ReactJS,  NodeJS,  MongoDB,  Firebase,  Android,  SQL,  Postman.  
+ 
+ WORK  EXPERIENCE  & INTERNSHIPS   
+• Trainee  Associate  Software  Developer  at Techreale  PVT.LTD  in Valsad  (Jan’24 -April’24)  
+◦ Assisted  in developing,  testing,  and debugging  software  applications  to ensure  quality  and functionality.  
+◦ Collaborated  with  teams  to integrate  APIs  and create  user -friendly,  responsive  interfaces.  
+◦ Gained  hands -on experience  with  Agile  methodologies  and version  control  systems  like Git. 
+◦ Contributed  to troubleshooting  and resolving  software  issues  efficiently.  
+• React  Developer  Intern  at INFOLABZ  IT SERVICES  PVT.  LTD  in Ahmedabad  (July’23 -Aug’23)  
+◦ Enhanced  proficiency  in using  React,  a fundamental  framework  for web  development.  
+◦ Gained  hands -on experience  in building  responsive  and interactive  user  interfaces.  
+◦ Acquired  the ability  to handle  state  management  effectively  in React  applications.  
+◦ Improved  skills  in debugging  and optimizing  React  applications  for better  performance.  
+◦ Strengthened  knowledge  of asynchronous  JavaScript  and its application  in API calls.  
+ 
+ACHIVEMENT   
+◦ Participated  SSIP  Hackathon  2022  – Developed  a smart  e-Hajiri -Master  solution  for attendance  management  problem.  
+ 
+AREA  OF INTEREST   HOBBY   
+◦ AI/ML -LLM,  RAG  
+◦ Cloud  Computing  
+◦ Data  Science  & Analytics  ◦ Coding  
+◦ Playing  Chess  
+◦ Learning  new  technologies  
