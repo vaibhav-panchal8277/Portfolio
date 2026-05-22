@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Code2, Brain, Rocket, Database } from "lucide-react";
 
 const stats = [
-  { icon: Code2, label: "Projects Completed", value: "10+" },
+  { icon: Code2, label: "Projects Completed", value: "15+" },
   { icon: Brain, label: "Research Papers", value: "2" },
   { icon: Rocket, label: "Years Experience", value: "<1" },
   { icon: Database, label: "Tech Stack", value: "10+" },
@@ -36,7 +36,7 @@ export default function About() {
             <Card className="bg-white/5 border-white/10 backdrop-blur-xl p-5 sm:p-8 relative overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <p className="text-base sm:text-lg text-gray-300 leading-relaxed relative z-10">
-                Aspiring Software Developer and current Jr. AI/ML Developer at TestGrid.io. I completed my Master&apos;s in Software Engineering at L.D. College of Engineering, where I specialized in Artificial Intelligence, Machine Learning, Data Science, and Image Processing. My background includes developing AI-driven automation, a frontend web development internship at Techreale (React JS), and building a PHP-based School Management System for the SSIP program. When I&apos;m not coding, I enjoy gaming, music, and exploring new tech. Let&apos;s connect!
+                Aspiring Software Developer and current Jr. AI/ML Developer at TestGrid.io. I completed my Master&apos;s in Software Engineering at L.D. College of Engineering, where I specialized in [...]
               </p>
             </Card>
           </motion.div>
