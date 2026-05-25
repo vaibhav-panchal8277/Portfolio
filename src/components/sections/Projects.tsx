@@ -27,12 +27,13 @@ const projects = [
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop"
   },
   {
-    title: "website-metadata-inspector",
-    description: "A modern web-based tool that analyzes websites and extracts metadata, SEO insights, content structure, and technology information instantly.",
-    tech: ["Python", "CSS", "html"],
-    github: "https://github.com/Rathi-patel/website-metadata-inspector",
-    live: "#",
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop"
+    title: "NeighborShare Hub",
+    description: "A peer-to-peer neighborhood rental marketplace where users can list, borrow, and lend local items with secure auth, storage, messaging, and payments.",
+    problem: "Neighbors often buy rarely used items instead of safely borrowing from trusted people nearby.",
+    tech: ["Next.js", "Supabase", "Razorpay", "Tailwind CSS"],
+    github: "https://github.com/vaibhav-panchal8277/neighborshare-hub",
+    live: "https://neighborshare-hub.vercel.app/",
+    image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=1000&auto=format&fit=crop"
   },
   {
     title: "MathScribe",
