@@ -1,11 +1,29 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Send, MapPin, Mail, Phone } from "lucide-react";
+import { Send, MapPin, Mail, Phone, CheckCircle, AlertCircle } from "lucide-react";
 import { FaGithub as Github, FaLinkedin as Linkedin } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
+import { useActionState, useEffect, useRef, useState } from "react";
+import { sendEmail } from "@/app/actions";
 
 export default function Contact() {
+  const formRef = useRef<HTMLFormElement>(null);
+  const [messageLength, setMessageLength] = useState(0);
+  
+  const [state, formAction, isPending] = useActionState(sendEmail, {
+    success: false,
+    message: "",
+  });
+
+  // Reset form upon successful email delivery
+  useEffect(() => {
+    if (state.success) {
+      formRef.current?.reset();
+      setMessageLength(0);
+    }
+  }, [state.success]);
+
   return (
     <section id="contact" className="py-16 sm:py-20 lg:py-24 relative overflow-hidden">
       {/* Background glow */}
@@ -83,14 +101,32 @@ export default function Contact() {
             viewport={{ once: true }}
             className="lg:col-span-3"
           >
-            <form className="bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-8 backdrop-blur-md flex flex-col gap-5 sm:gap-6">
+            <form 
+              ref={formRef}
+              action={formAction}
+              className="bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-8 backdrop-blur-md flex flex-col gap-5 sm:gap-6"
+            >
+              {/* Honeypot field to block automated spambots */}
+              <input
+                type="text"
+                name="botCheck"
+                className="hidden"
+                style={{ display: "none" }}
+                tabIndex={-1}
+                autoComplete="off"
+              />
+
               <div className="grid md:grid-cols-2 gap-5 sm:gap-6">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium text-gray-300">Name</label>
                   <input
                     type="text"
                     id="name"
-                    className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    name="name"
+                    required
+                    maxLength={100}
+                    disabled={isPending}
+                    className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                     placeholder="John Doe"
                   />
                 </div>
@@ -99,7 +135,11 @@ export default function Contact() {
                   <input
                     type="email"
                     id="email"
-                    className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    name="email"
+                    required
+                    maxLength={100}
+                    disabled={isPending}
+                    className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -110,24 +150,60 @@ export default function Contact() {
                 <input
                   type="text"
                   id="subject"
-                  className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  name="subject"
+                  required
+                  maxLength={150}
+                  disabled={isPending}
+                  className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                   placeholder="How can I help you?"
                 />
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="message" className="text-sm font-medium text-gray-300">Message</label>
+                <div className="flex justify-between items-center">
+                  <label htmlFor="message" className="text-sm font-medium text-gray-300">Message</label>
+                  <span className="text-xs text-gray-500">{messageLength} / 2500</span>
+                </div>
                 <textarea
                   id="message"
+                  name="message"
+                  required
+                  maxLength={2500}
                   rows={5}
-                  className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
+                  disabled={isPending}
+                  onChange={(e) => setMessageLength(e.target.value.length)}
+                  className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none disabled:opacity-50 disabled:cursor-not-allowed"
                   placeholder="Your message here..."
                 ></textarea>
               </div>
 
-              <Button size="lg" variant="glow" className="w-full py-6 text-base sm:text-lg font-bold group">
-                Send Message
-                <Send className="w-5 h-5 ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              {/* Status Message Display */}
+              {state.message && (
+                <div
+                  className={`p-4 rounded-xl flex items-start gap-3 border ${
+                    state.success
+                      ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-400"
+                      : "bg-rose-500/10 border-rose-500/20 text-rose-400"
+                  }`}
+                >
+                  {state.success ? (
+                    <CheckCircle className="w-5 h-5 shrink-0 mt-0.5" />
+                  ) : (
+                    <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
+                  )}
+                  <p className="text-sm font-medium">{state.message}</p>
+                </div>
+              )}
+
+              <Button 
+                size="lg" 
+                variant="glow" 
+                type="submit"
+                disabled={isPending}
+                className="w-full py-6 text-base sm:text-lg font-bold group disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isPending ? "Sending Message..." : "Send Message"}
+                <Send className={`w-5 h-5 ml-2 transition-transform ${isPending ? "animate-pulse" : "group-hover:translate-x-1 group-hover:-translate-y-1"}`} />
               </Button>
             </form>
           </motion.div>
@@ -136,3 +212,4 @@ export default function Contact() {
     </section>
   );
 }
+
