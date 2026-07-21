@@ -9,40 +9,49 @@ import { Badge } from "@/components/ui/badge";
 
 const projects = [
   {
-    title: "ExamForge",
-    description: "AI-powered exam question generation platform from syllabus PDFs. Converts raw syllabus text into structured question papers with configurable difficulty.",
-    problem: "Educators spend hours manually drafting test questions that align with specific curriculum constraints.",
-    tech: ["Python", "Streamlit", "Ollama", "LLMs"],
-    github: "https://github.com/Rathi-patel/examforge",
+    title: "Multi-Agent Customer Support System",
+    description: "Built a multi-agent customer support platform with a Supervisor Agent that classifies query intent and routes to specialized Billing, Technical Support, and Refund sub-agents implemented as LangGraph state-graph nodes. Preserved context across agent hand-offs via summarized state transfer and persisted conversation memory (Redis + SQLite). Instrumented every agent call, tool call, and hand-off with Langfuse tracing for full observability.",
+    problem: "Customer support queries require intelligent routing and context preservation across multiple specialized agents.",
+    tech: ["Python", "LangGraph", "LangChain", "FastAPI", "Redis", "Langfuse"],
+    github: "#",
     live: "#",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1000&auto=format&fit=crop"
+    image: "/multi_agent_support.png"
   },
   {
-    title: "Cross-browser Testing Tool",
-    description: "Cloud-based parallel execution environment to run web application tests across multiple browsers and OS combinations simultaneously.",
-    problem: "Local cross-browser testing is slow and prone to environment inconsistencies.",
-    tech: ["Docker", "Selenium Grid", "FastAPI", "React"],
-    github: "https://github.com/vaibhav-panchal8277/cross-browser-tool",
+    title: "Production RAG System with Evaluation",
+    description: "Built a RAG pipeline with hybrid retrieval (dense vector similarity + BM25 keyword search) and a citation-enforced grounding prompt to reduce hallucination risk. Includes a first-class evaluation suite using RAGAS metrics Faithfulness, Context Precision, Answer Relevancy benchmarking every change against a held-out Q&A test set. Tracked evaluation results over time with Langfuse to catch quality regressions, surfaced via a live Streamlit metrics dashboard.",
+    problem: "RAG systems need rigorous evaluation pipelines to prevent hallucinations and quality regressions in production.",
+    tech: ["Python", "LangChain", "ChromaDB/Pinecone", "RAGAS", "Streamlit"],
+    github: "#",
     live: "#",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop"
+    image: "/rag_system_eval.png"
   },
   {
-    title: "NeighborShare Hub",
-    description: "A peer-to-peer neighborhood rental marketplace where users can list, borrow, and lend local items with secure auth, storage, messaging, and payments.",
-    problem: "Neighbors often buy rarely used items instead of safely borrowing from trusted people nearby.",
-    tech: ["Next.js", "Supabase", "Razorpay", "Tailwind CSS"],
-    github: "https://github.com/vaibhav-panchal8277/neighborshare-hub",
-    live: "https://neighborshare-hub.vercel.app/",
-    image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=1000&auto=format&fit=crop"
+    title: "Intrusion Detection System — CNN + BiLSTM + Attention",
+    description: "Designed a hybrid CNN–BiLSTM–Attention architecture for multi-class network traffic classification; reached 98.4%+ accuracy on NSL-KDD and CICIDS benchmarks, outperforming Random Forest and SVM baselines. Applied PCA and a stacked AutoEncoder for feature compression, reducing input dimensionality by ~60% without accuracy loss. Structured the codebase as a modular pipeline (ingest → preprocess → train → evaluate) for easy retraining on new datasets.",
+    problem: "Traditional intrusion detection models lack the accuracy and real-time performance needed for modern network security.",
+    tech: ["Python", "TensorFlow/Keras", "Scikit-learn", "PCA", "AutoEncoder"],
+    github: "#",
+    live: "#",
+    image: "/intrusion_detection.png"
   },
   {
-    title: "MathScribe",
-    description: "Web-based math handwriting recognition application that converts drawn equations into LaTeX code using Gemini AI.",
-    problem: "Digitizing handwritten complex mathematical formulas into LaTeX is tedious.",
-    tech: ["HTML5 Canvas", "Gemini API", "JavaScript", "LaTeX"],
-    github: "https://github.com/vaibhav-panchal8277/math-draw-tool",
+    title: "ExamForge — LLM-Powered Exam Question Generator",
+    description: "Built an end-to-end RAG pipeline: ingests syllabus PDFs, chunks and embeds content, then prompts an LLM to generate structured question papers with configurable difficulty and Bloom's taxonomy tagging. Supports both local inference (Ollama) and cloud (OpenAI API), making it deployable in air-gapped environments; cut manual question-drafting time by ~80%. Engineered structured JSON output parsing with validation to ensure generated questions conform to a strict schema before rendering to PDF.",
+    problem: "Educators spend hours manually drafting test questions that align with specific curriculum and difficulty constraints.",
+    tech: ["Python", "LangChain", "Ollama", "OpenAI GPT", "Streamlit"],
+    github: "#",
     live: "#",
-    image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1000&auto=format&fit=crop"
+    image: "/examforge_generator.png"
+  },
+  {
+    title: "Content-Based Movie Recommendation Engine",
+    description: "Implemented TF-IDF vectorisation and cosine similarity on the TMDB 5000 dataset; deployed as a real-time Streamlit app with sub-second recommendation latency. Pipeline is architected for extensibility collaborative filtering and hybrid approaches can be plugged in without restructuring the serving layer.",
+    problem: "Users need personalized movie recommendations based on content similarity rather than generic popularity lists.",
+    tech: ["Python", "Scikit-learn", "TF-IDF", "Cosine Similarity", "Streamlit"],
+    github: "#",
+    live: "#",
+    image: "/movie_recommendation.png"
   }
 ];
 
