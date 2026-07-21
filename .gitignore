@@ -9,6 +9,7 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
+package-lock.json
 
 # testing
 /coverage
@@ -19,6 +20,7 @@
 
 # production
 /build
+/dist
 
 # misc
 .DS_Store
@@ -30,9 +32,15 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# env / secret files (can opt-in for committing if needed)
+.env
+.env.*
 !.env.example
+*.key
+*.cert
+*.p12
+*.pfx
+*.jks
 
 # vercel
 .vercel
@@ -44,3 +52,33 @@ next-env.d.ts
 # local tool caches
 .code-review-graph/
 .antigravityignore
+
+# OS junk files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# IDE / editor configs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# logs
+logs/
+*.log
+
+# temp files
+*.tmp
+*.temp
+*.bak
+*.orig
