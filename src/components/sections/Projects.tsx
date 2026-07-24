@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 
 const projects = [
   {
-    title: "Multi-Agent Customer Support System",
+    title: "Multi-Agent Customer Support System — LangGraph Orchestration",
     description: "Built a multi-agent customer support platform with a Supervisor Agent that classifies query intent and routes to specialized Billing, Technical Support, and Refund sub-agents implemented as LangGraph state-graph nodes. Preserved context across agent hand-offs via summarized state transfer and persisted conversation memory (Redis + SQLite). Instrumented every agent call, tool call, and hand-off with Langfuse tracing for full observability.",
     problem: "Customer support queries require intelligent routing and context preservation across multiple specialized agents.",
     tech: ["Python", "LangGraph", "LangChain", "FastAPI", "Redis", "Langfuse"],

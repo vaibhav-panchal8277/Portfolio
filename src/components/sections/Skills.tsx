@@ -5,57 +5,72 @@ import { Card } from "@/components/ui/card";
 
 const skillCategories = [
   {
-    title: "AI / ML",
+    title: "AI & ML",
     skills: [
-      { name: "Machine Learning", level: 95 },
-      { name: "Deep Learning", level: 90 },
-      { name: "PyTorch", level: 90 },
-      { name: "TensorFlow", level: 90 },
-      { name: "Transformers", level: 85 },
-      { name: "AI Model Development & Optimization", level: 80 },
-
+      { name: "Computer Vision", level: 90 },
+      { name: "NLP & LLMs", level: 90 },
+      { name: "RAG Systems", level: 85 },
+      { name: "Object Detection", level: 85 },
+      { name: "Prompt Engineering", level: 85 },
+      { name: "OpenAI API / Ollama", level: 80 },
+      { name: "RAGAS / Langfuse", level: 75 },
     ],
     color: "from-blue-500 to-cyan-400"
   },
   {
-    title: "Programming languages",
+    title: "Frameworks & Libraries",
     skills: [
-      { name: "Python", level: 95 },
-      { name: "SQL", level: 80 },
-      { name: "Java", level: 70 },
-      { name: "C", level: 50 },
-      { name: "C++", level: 30 },
-    ],
-    color: "from-purple-500 to-pink-400"
-  },
-  {
-    title: "Backend",
-    skills: [
-      { name: "FastAPI", level: 95 },
-      { name: "Python", level: 95 },
-      { name: "MongoDB", level: 80 },
-      { name: "Node.js", level: 75 },
-      { name: "Flask frameworks", level: 70 },
-    ],
-    color: "from-green-500 to-emerald-400"
-  },
-  {
-    title: "Tools & DevOps",
-    skills: [
-      { name: "Git", level: 90 },
-      { name: "Jupyter Notebook", level: 90 },
-      { name: "Postman", level: 70 },
-      { name: "Firebase", level: 50 },
+      { name: "PyTorch", level: 90 },
+      { name: "TensorFlow / Keras", level: 90 },
+      { name: "Scikit-learn", level: 85 },
+      { name: "HuggingFace Transformers", level: 85 },
+      { name: "LangChain / LangGraph", level: 85 },
+      { name: "XGBoost", level: 75 },
+      { name: "FastAPI / Flask", level: 90 },
+      { name: "Streamlit", level: 85 },
     ],
     color: "from-orange-500 to-yellow-400"
   },
   {
-    title: "Web Programming",
+    title: "Programming Languages",
     skills: [
-      { name: "HTML", level: 90 },
-      { name: "CSS", level: 85 },
-      { name: "JavaScript", level: 50 },
-      { name: "React", level: 30 },
+      { name: "Python (Advanced)", level: 95 },
+      { name: "SQL", level: 80 },
+      { name: "JavaScript", level: 65 },
+      { name: "C / C++", level: 55 },
+      { name: "Java", level: 60 },
+      { name: "HTML / CSS", level: 80 },
+    ],
+    color: "from-purple-500 to-pink-400"
+  },
+  {
+    title: "Cloud & Infrastructure",
+    skills: [
+      { name: "AWS (EC2)", level: 70 },
+      { name: "Docker", level: 70 },
+    ],
+    color: "from-green-500 to-emerald-400"
+  },
+  {
+    title: "Databases",
+    skills: [
+      { name: "Redis", level: 75 },
+      { name: "SQLite", level: 80 },
+      { name: "ChromaDB", level: 80 },
+      { name: "Pinecone (Vector DB)", level: 75 },
+    ],
+    color: "from-blue-500 to-cyan-400"
+  },
+  {
+    title: "Tools & Practices",
+    skills: [
+      { name: "Git / Bitbucket", level: 90 },
+      { name: "Jupyter Notebook", level: 90 },
+      { name: "MLflow", level: 70 },
+      { name: "Postman", level: 75 },
+      { name: "Selenium Grid", level: 65 },
+      { name: "REST API Design", level: 85 },
+      { name: "CI/CD", level: 70 },
     ],
     color: "from-purple-500 to-pink-400"
   }
@@ -76,7 +91,7 @@ export default function Skills() {
           <div className="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-600 mx-auto rounded-full"></div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-5 sm:gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
           {skillCategories.map((category, catIdx) => (
             <motion.div
               key={category.title}
@@ -90,26 +105,20 @@ export default function Skills() {
                   {category.title}
                 </h3>
 
-                <div className="space-y-6">
+                <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill, idx) => (
-                    <div key={skill.name}>
-                      <div className="flex justify-between gap-3 mb-2">
-                        <span className="min-w-0 text-sm font-medium text-gray-300 break-words">{skill.name}</span>
-                        <span className="shrink-0 text-sm font-medium text-gray-500">{skill.level}%</span>
+                    <motion.div
+                      key={skill.name}
+                      initial={false}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: 0.1 + idx * 0.05 }}
+                    >
+                      <div className="px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 transition-all flex items-center gap-2 sm:gap-3 group cursor-default shadow-lg shadow-black/20 hover:shadow-black/40 hover:-translate-y-0.5">
+                        <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${category.color} shadow-[0_0_8px_rgba(255,255,255,0.3)] group-hover:scale-125 transition-transform`}></div>
+                        <span className="text-sm font-medium text-gray-200 group-hover:text-white transition-colors">{skill.name}</span>
                       </div>
-                      <div className="h-2 w-full bg-white/10 rounded-full overflow-hidden">
-                        <motion.div
-                          initial={false}
-                          whileInView={{ width: `${skill.level}%` }}
-                          style={{ width: `${skill.level}%` }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 1, delay: 0.2 + idx * 0.1, ease: "easeOut" }}
-                          className={`h-full bg-gradient-to-r ${category.color} rounded-full relative`}
-                        >
-                          <div className="absolute top-0 right-0 bottom-0 w-4 bg-white/30 blur-[2px]"></div>
-                        </motion.div>
-                      </div>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </Card>
