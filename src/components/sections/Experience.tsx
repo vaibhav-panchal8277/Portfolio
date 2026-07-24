@@ -8,39 +8,39 @@ const experiences = [
     title: "Junior AI/ML Developer",
     company: "TestGrid Labs Inc.",
     date: "May 2026 - Present",
-    description: "Working on AI-driven solutions and contributing to innovative testing technologies and automation.",
+    description: "Built deep learning inference pipelines for automated UI regression detection. Designed and deployed FastAPI-based model-serving endpoints integrated into CI/CD pipelines for real-time ML inference at scale. Prototyped an LLM-assisted test case generation module using LangChain and Ollama.",
     icon: Code,
     type: "work"
   },
   {
-    title: "Master's in Computer Software Engineering",
-    company: "L.D. College of Engineering",
+    title: "Master's in Software Engineering",
+    company: "L.D. College of Engineering, GTU",
     date: "2024 - 2026",
-    description: "Building a strong foundation in Machine Learning, Artificial Intelligence, Data Science, and Advanced Data Structures.",
+    description: "CGPA: 8.21/10. Specialized in Machine Learning, AI, and Deep Learning. Research in Computer Vision (YOLOv11 + ECA, +3.8% mAP50, under review) and Cybersecurity (hybrid IDS, 98.4% accuracy).",
     icon: GraduationCap,
     type: "education"
   },
   {
     title: "Trainee Associate Software Developer",
-    company: "Techreale PVT.LTD",
+    company: "Techreale Pvt. Ltd.",
     date: "Jan 2024 - Apr 2024",
-    description: "Assisted in developing, testing, and debugging software applications. Collaborated to integrate APIs and create responsive interfaces.",
+    description: "Delivered production features for the Famyll healthcare platform (React.js, Node.js, MongoDB) across claim management, auth flows, and real-time communication modules. Reduced API response handling bugs by refactoring async integration patterns across 3 sprint cycles.",
     icon: Briefcase,
     type: "work"
   },
   {
     title: "Bachelor of Engineering (Computer Engineering)",
-    company: "GIDC Degree Engineering College",
+    company: "GIDC Degree Engineering College, GTU",
     date: "2020 - 2024",
-    description: "Graduated with 8.11 CGPA. Participated in SSIP Hackathon 2022 and developed a smart e-Hajiri-Master solution.",
+    description: "CGPA: 8.11/10. SSIP Hackathon 2022 — developed an automated smart attendance management system; selected among top teams from Gujarat.",
     icon: GraduationCap,
     type: "education"
   },
   {
     title: "React Developer Intern",
-    company: "INFOLABZ IT SERVICES PVT. LTD",
+    company: "INFOLABZ IT Services Pvt. Ltd.",
     date: "Jul 2023 - Aug 2023",
-    description: "Gained hands-on experience in building responsive UI and handling state management in React applications.",
+    description: "Built and optimized React.js dashboard components with async API integration. Improved rendering performance through targeted component-level refactoring.",
     icon: Code,
     type: "work"
   }

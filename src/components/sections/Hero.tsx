@@ -29,27 +29,14 @@ export default function Hero() {
           </h1>
 
           <h2 className="text-lg sm:text-xl md:text-2xl text-gray-300 font-medium leading-relaxed">
-            AI/ML Enthusiast | Computer Vision | Deep Learning | Automation | Research Enthusiast
+            Junior AI/ML Developer | Deep Learning Researcher | AI Full-Stack Engineer
           </h2>
 
           <p className="text-base sm:text-lg text-gray-400 max-w-lg leading-relaxed">
             Building AI-powered tools, intelligent systems, and research-driven products that solve real-world problems.
           </p>
 
-          <div className="flex flex-wrap gap-3 mt-2">
-            {["Python", "FastAPI", "AI", "Machine Learning", "React", "Research"].map((badge, i) => (
-              <motion.div
-                key={badge}
-                initial={false}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 + i * 0.1 }}
-              >
-                <Badge variant="outline" className="bg-white/5 border-white/10 hover:bg-white/10 transition-colors">
-                  {badge}
-                </Badge>
-              </motion.div>
-            ))}
-          </div>
+
 
           <div className="flex w-full flex-col gap-3 mt-4 sm:mt-6 sm:w-auto sm:flex-row sm:flex-wrap sm:gap-4">
             <Button
@@ -68,7 +55,7 @@ export default function Hero() {
               variant="outline"
               size="lg"
               className="w-full border-white/20 hover:bg-white/10 group sm:w-auto"
-              onClick={() => window.open("/Vaibhav_Panchal.pdf?v=2", "_blank")}
+              onClick={() => window.open("/Vaibhav_Panchal.pdf", "_blank")}
             >
               <Download className="mr-2 w-4 h-4 group-hover:-translate-y-1 transition-transform" />
               Download Resume

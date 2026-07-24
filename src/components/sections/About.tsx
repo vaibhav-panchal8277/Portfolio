@@ -8,7 +8,7 @@ const stats = [
   { icon: Code2, label: "Projects Completed", value: "15+" },
   { icon: Brain, label: "Research Papers", value: "2" },
   { icon: Rocket, label: "Years Experience", value: "<1" },
-  { icon: Database, label: "Tech Stack", value: "10+" },
+  { icon: Database, label: "Tech Stack", value: "20+" },
 ];
 
 export default function About() {
@@ -36,7 +36,7 @@ export default function About() {
             <Card className="bg-white/5 border-white/10 backdrop-blur-xl p-5 sm:p-8 relative overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <p className="text-base sm:text-lg text-gray-300 leading-relaxed relative z-10">
-                Aspiring Software Developer and current Jr. AI/ML Developer at TestGrid.io. I completed my Master&apos;s in Software Engineering at L.D. College of Engineering, where I specialized in [...]
+                AI/ML Developer at TestGrid Labs Inc. building intelligent test automation pipelines using deep learning and LLMs. M.E. in Software Engineering from L.D. College of Engineering (CGPA 8.21/10). Active research in Computer Vision (YOLOv11 + ECA) and Cybersecurity (hybrid IDS architectures). Hands-on across the full ML lifecycle from data engineering and model training to FastAPI deployment and CI/CD integration.
               </p>
             </Card>
           </motion.div>
