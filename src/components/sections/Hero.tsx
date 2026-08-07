@@ -29,7 +29,7 @@ export default function Hero() {
           </h1>
 
           <h2 className="text-lg sm:text-xl md:text-2xl text-gray-300 font-medium leading-relaxed">
-            Junior AI/ML Developer | Deep Learning Researcher | AI Full-Stack Engineer
+            Junior AI/ML Developer | GenAI &amp; LLM Systems Engineer
           </h2>
 
           <p className="text-base sm:text-lg text-gray-400 max-w-lg leading-relaxed">

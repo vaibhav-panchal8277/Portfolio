@@ -8,7 +8,7 @@ const experiences = [
     title: "Junior AI/ML Developer",
     company: "TestGrid Labs Inc.",
     date: "May 2026 - Present",
-    description: "Built deep learning inference pipelines for automated UI regression detection. Designed and deployed FastAPI-based model-serving endpoints integrated into CI/CD pipelines for real-time ML inference at scale. Prototyped an LLM-assisted test case generation module using LangChain and Ollama.",
+    description: "Engineered deep learning inference pipelines for automated UI regression detection, reducing manual test triage time. Designed and deployed Flask-based model-serving endpoints integrated into CI/CD pipelines for real-time ML inference at scale. Prototyped an LLM-assisted test case generation module using the OpenAI API, reducing repetitive test authoring effort. Configured Nginx as a reverse proxy in front of Flask endpoints for production ML inference traffic.",
     icon: Code,
     type: "work"
   },
@@ -16,7 +16,7 @@ const experiences = [
     title: "Master's in Software Engineering",
     company: "L.D. College of Engineering, GTU",
     date: "2024 - 2026",
-    description: "CGPA: 8.21/10. Specialized in Machine Learning, AI, and Deep Learning. Research in Computer Vision (YOLOv11 + ECA, +3.8% mAP50, under review) and Cybersecurity (hybrid IDS, 98.4% accuracy).",
+    description: "CGPA: 8.21/10. Specialized in Machine Learning, AI, and Deep Learning. Research in Computer Vision (YOLOv11 + ECA, +3.8% mAP50 on DIOR-R, under review) and Cybersecurity (hybrid IDS, 98.4% accuracy).",
     icon: GraduationCap,
     type: "education"
   },
@@ -24,23 +24,23 @@ const experiences = [
     title: "Trainee Associate Software Developer",
     company: "Techreale Pvt. Ltd.",
     date: "Jan 2024 - Apr 2024",
-    description: "Delivered production features for the Famyll healthcare platform (React.js, Node.js, MongoDB) across claim management, auth flows, and real-time communication modules. Reduced API response handling bugs by refactoring async integration patterns across 3 sprint cycles.",
+    description: "Delivered production features for the Famyll healthcare platform (React.js, Node.js, MongoDB) across claim management, auth flows, and real-time communication modules. Reduced API response handling bugs by refactoring async integration patterns; contributed across 3 sprint cycles in an Agile team of 8.",
     icon: Briefcase,
     type: "work"
   },
   {
     title: "Bachelor of Engineering (Computer Engineering)",
-    company: "GIDC Degree Engineering College, GTU",
+    company: "GIDC Degree Engineering College (GDEC), GTU",
     date: "2020 - 2024",
     description: "CGPA: 8.11/10. SSIP Hackathon 2022 — developed an automated smart attendance management system; selected among top teams from Gujarat.",
     icon: GraduationCap,
     type: "education"
   },
   {
-    title: "React Developer Intern",
+    title: "Summer Intern — Frontend Development (React)",
     company: "INFOLABZ IT Services Pvt. Ltd.",
-    date: "Jul 2023 - Aug 2023",
-    description: "Built and optimized React.js dashboard components with async API integration. Improved rendering performance through targeted component-level refactoring.",
+    date: "Jul 2023",
+    description: "Developed and optimized React.js dashboard components with async API integration. Improved rendering performance through targeted component-level refactoring.",
     icon: Code,
     type: "work"
   }

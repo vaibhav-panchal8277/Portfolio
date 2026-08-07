@@ -9,35 +9,26 @@ import { Badge } from "@/components/ui/badge";
 
 const projects = [
   {
-    title: "Multi-Agent Customer Support System — LangGraph Orchestration",
-    description: "Built a multi-agent customer support platform with a Supervisor Agent that classifies query intent and routes to specialized Billing, Technical Support, and Refund sub-agents implemented as LangGraph state-graph nodes. Preserved context across agent hand-offs via summarized state transfer and persisted conversation memory (Redis + SQLite). Instrumented every agent call, tool call, and hand-off with Langfuse tracing for full observability.",
-    problem: "Customer support queries require intelligent routing and context preservation across multiple specialized agents.",
-    tech: ["Python", "LangGraph", "LangChain", "FastAPI", "Redis", "Langfuse"],
+    title: "MESH Support — Multi-Agent Customer Support Platform",
+    description: "Architected MESH Support using LangGraph to orchestrate a Supervisor agent that classifies and routes queries to specialized Billing, Technical, and Refund sub-agents, each with isolated prompts, tools, and memory, backed by FastAPI, MongoDB, and GPT-5.4-mini. Integrated NVIDIA NeMo Guardrails to block jailbreak, prompt-injection, off-topic, and unsafe messages achieving 100% precision/recall on a labeled safety set with only ~1.8s added overhead per turn. Instrumented every turn with Langfuse distributed tracing and shipped a real-time observability dashboard; verified reliability with an automated pytest suite (21/21 tests passing).",
+    problem: "Customer support queries require intelligent routing, context preservation, and safety guardrails across multiple specialized agents.",
+    tech: ["Python", "LangGraph", "FastAPI", "MongoDB", "GPT-5.4-mini", "NeMo Guardrails", "Langfuse", "Pytest"],
     github: "#",
     live: "#",
     image: "/multi_agent_support.png"
   },
   {
-    title: "Production RAG System with Evaluation",
-    description: "Built a RAG pipeline with hybrid retrieval (dense vector similarity + BM25 keyword search) and a citation-enforced grounding prompt to reduce hallucination risk. Includes a first-class evaluation suite using RAGAS metrics Faithfulness, Context Precision, Answer Relevancy benchmarking every change against a held-out Q&A test set. Tracked evaluation results over time with Langfuse to catch quality regressions, surfaced via a live Streamlit metrics dashboard.",
+    title: "RAG System with Evaluation Pipeline",
+    description: "Achieved 0.94 Faithfulness, 0.91 Answer Relevancy, and 0.88 Context Precision (RAGAS) on a golden test set, ensuring context-grounded responses with zero hallucinations. Built hybrid retrieval (dense MiniLM-384d embeddings + BM25 keyword search via Reciprocal Rank Fusion) achieving ~920ms average end-to-end query latency, with a BM25 auto-fallback for zero-downtime operation. Enforced input safety with NeMo Guardrails, blocking 100% of tested prompt injections and jailbreak attempts before reaching the retrieval pipeline.",
     problem: "RAG systems need rigorous evaluation pipelines to prevent hallucinations and quality regressions in production.",
-    tech: ["Python", "LangChain", "ChromaDB/Pinecone", "RAGAS", "Streamlit"],
+    tech: ["Python", "FastAPI", "React", "Pinecone", "RAGAS", "MiniLM", "BM25", "NeMo Guardrails", "Langfuse"],
     github: "#",
     live: "#",
     image: "/rag_system_eval.png"
   },
   {
-    title: "Intrusion Detection System — CNN + BiLSTM + Attention",
-    description: "Designed a hybrid CNN–BiLSTM–Attention architecture for multi-class network traffic classification; reached 98.4%+ accuracy on NSL-KDD and CICIDS benchmarks, outperforming Random Forest and SVM baselines. Applied PCA and a stacked AutoEncoder for feature compression, reducing input dimensionality by ~60% without accuracy loss. Structured the codebase as a modular pipeline (ingest → preprocess → train → evaluate) for easy retraining on new datasets.",
-    problem: "Traditional intrusion detection models lack the accuracy and real-time performance needed for modern network security.",
-    tech: ["Python", "TensorFlow/Keras", "Scikit-learn", "PCA", "AutoEncoder"],
-    github: "#",
-    live: "#",
-    image: "/intrusion_detection.png"
-  },
-  {
     title: "ExamForge — LLM-Powered Exam Question Generator",
-    description: "Built an end-to-end RAG pipeline: ingests syllabus PDFs, chunks and embeds content, then prompts an LLM to generate structured question papers with configurable difficulty and Bloom's taxonomy tagging. Supports both local inference (Ollama) and cloud (OpenAI API), making it deployable in air-gapped environments; cut manual question-drafting time by ~80%. Engineered structured JSON output parsing with validation to ensure generated questions conform to a strict schema before rendering to PDF.",
+    description: "Built an end-to-end RAG pipeline: ingests syllabus PDFs, chunks and embeds content, then prompts an LLM to generate structured question papers with configurable difficulty and Bloom's taxonomy tagging. Supports both local inference (Ollama) and cloud (OpenAI API), making it deployable in air-gapped institutional environments; cut manual question-drafting time by ~80% in pilot use. Engineered structured JSON output parsing with validation to ensure generated questions conform to a strict schema before rendering to PDF.",
     problem: "Educators spend hours manually drafting test questions that align with specific curriculum and difficulty constraints.",
     tech: ["Python", "LangChain", "Ollama", "OpenAI GPT", "Streamlit"],
     github: "#",
@@ -46,7 +37,7 @@ const projects = [
   },
   {
     title: "Content-Based Movie Recommendation Engine",
-    description: "Implemented TF-IDF vectorisation and cosine similarity on the TMDB 5000 dataset; deployed as a real-time Streamlit app with sub-second recommendation latency. Pipeline is architected for extensibility collaborative filtering and hybrid approaches can be plugged in without restructuring the serving layer.",
+    description: "Implemented TF-IDF vectorization and cosine similarity on the TMDB 5000 dataset; deployed as a real-time Streamlit app with sub-second recommendation latency. Pipeline is architected for extensibility — collaborative filtering and hybrid approaches can be plugged in without restructuring the serving layer.",
     problem: "Users need personalized movie recommendations based on content similarity rather than generic popularity lists.",
     tech: ["Python", "Scikit-learn", "TF-IDF", "Cosine Similarity", "Streamlit"],
     github: "#",

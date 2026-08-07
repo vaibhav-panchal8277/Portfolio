@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Code2, Brain, Rocket, Database } from "lucide-react";
 
 const stats = [
-  { icon: Code2, label: "Projects Completed", value: "15+" },
+  { icon: Code2, label: "Projects Completed", value: "20+" },
   { icon: Brain, label: "Research Papers", value: "2" },
   { icon: Rocket, label: "Years Experience", value: "<1" },
   { icon: Database, label: "Tech Stack", value: "20+" },
@@ -36,7 +36,7 @@ export default function About() {
             <Card className="bg-white/5 border-white/10 backdrop-blur-xl p-5 sm:p-8 relative overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <p className="text-base sm:text-lg text-gray-300 leading-relaxed relative z-10">
-                AI/ML Developer at TestGrid Labs Inc. building intelligent test automation pipelines using deep learning and LLMs. M.E. in Software Engineering from L.D. College of Engineering (CGPA 8.21/10). Active research in Computer Vision (YOLOv11 + ECA) and Cybersecurity (hybrid IDS architectures). Hands-on across the full ML lifecycle from data engineering and model training to FastAPI deployment and CI/CD integration.
+                AI/ML Developer at TestGrid Labs Inc. building intelligent test automation pipelines using deep learning and LLMs. M.E. in Software Engineering from L.D. College of Engineering (CGPA 8.21/10). Active research in Computer Vision (YOLOv11 + ECA, +3.8% mAP50 on DIOR-R, under review) and Cybersecurity (hybrid IDS, 98.4% accuracy). Hands-on across the full ML lifecycle — from data engineering and model training to Flask deployment and CI/CD integration. Core stack: PyTorch, TensorFlow, LangChain, Flask, Nginx, AWS, Docker.
               </p>
             </Card>
           </motion.div>
