@@ -14,6 +14,7 @@ const skillCategories = [
       { name: "Prompt Engineering", level: 85 },
       { name: "OpenAI API / Ollama", level: 80 },
       { name: "RAGAS / Langfuse", level: 75 },
+      { name: "NeMo Guardrails", level: 75 },
     ],
     color: "from-blue-500 to-cyan-400"
   },
@@ -27,6 +28,7 @@ const skillCategories = [
       { name: "LangChain / LangGraph", level: 85 },
       { name: "XGBoost", level: 75 },
       { name: "FastAPI / Flask", level: 90 },
+      { name: "React.js / Node.js", level: 70 },
       { name: "Streamlit", level: 85 },
     ],
     color: "from-orange-500 to-yellow-400"
@@ -48,14 +50,15 @@ const skillCategories = [
     skills: [
       { name: "AWS (EC2)", level: 70 },
       { name: "Docker", level: 70 },
+      { name: "Nginx", level: 65 },
     ],
     color: "from-green-500 to-emerald-400"
   },
   {
     title: "Databases",
     skills: [
-      { name: "Redis", level: 75 },
       { name: "SQLite", level: 80 },
+      { name: "MongoDB", level: 75 },
       { name: "ChromaDB", level: 80 },
       { name: "Pinecone (Vector DB)", level: 75 },
     ],
