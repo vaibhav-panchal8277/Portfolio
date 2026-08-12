@@ -40,6 +40,24 @@ const achievements = [
     color: "text-purple-400",
     bg: "bg-purple-500/10",
     border: "border-purple-500/20"
+  },
+  {
+    title: "Introduction to Model Context Protocol",
+    issuer: "Anthropic",
+    description: "Introduction to Model Context Protocol – Anthropic. (2026)",
+    icon: BadgeCheck,
+    color: "text-orange-400",
+    bg: "bg-orange-500/10",
+    border: "border-orange-500/20"
+  },
+  {
+    title: "Model Context Protocol: Advanced Topics",
+    issuer: "Anthropic",
+    description: "Model Context Protocol: Advanced Topics – Anthropic. (2026)",
+    icon: BadgeCheck,
+    color: "text-red-400",
+    bg: "bg-red-500/10",
+    border: "border-red-500/20"
   }
 ];
 
