@@ -1,0 +1,63 @@
+export const toolkit = [
+  {
+    group: "AI and ML",
+    items: [
+      "Computer Vision",
+      "NLP",
+      "LLMs",
+      "RAG",
+      "Object Detection",
+      "OCR",
+      "Prompt Engineering",
+      "OpenAI API",
+      "Ollama",
+      "RAGAS",
+      "Langfuse",
+      "NeMo Guardrails",
+    ],
+  },
+  {
+    group: "Frameworks",
+    items: [
+      "PyTorch",
+      "TensorFlow",
+      "Keras",
+      "Scikit-learn",
+      "HuggingFace Transformers",
+      "ONNX",
+      "XGBoost",
+      "LangChain",
+      "LangGraph",
+      "FastAPI",
+      "Flask",
+      "React.js",
+      "Node.js",
+      "Streamlit",
+    ],
+  },
+  {
+    group: "Languages",
+    items: ["Python", "Go", "SQL", "JavaScript", "C/C++", "Java", "HTML/CSS"],
+  },
+  {
+    group: "Cloud and infrastructure",
+    items: ["AWS (EC2)", "Docker", "Nginx"],
+  },
+  {
+    group: "Databases",
+    items: ["SQLite", "MongoDB", "ChromaDB", "Pinecone"],
+  },
+  {
+    group: "Tools and practices",
+    items: [
+      "Git",
+      "Jupyter",
+      "MLflow",
+      "Postman",
+      "Selenium Grid",
+      "Bitbucket",
+      "REST API Design",
+      "CI/CD",
+    ],
+  },
+];

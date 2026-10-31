@@ -1,38 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vaibhav Panchal's portfolio
 
-## Getting Started
+Personal site for my work in AI/ML, live at [portfolio-4gke.vercel.app](https://portfolio-4gke.vercel.app/). Built with Next.js 16, React 19 and Tailwind CSS 4. Every page is static.
 
-First, run the development server:
+## Run it
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [https://portfolio-4gke.vercel.app/](https://portfolio-4gke.vercel.app/) to see the live portfolio.
+The site runs at http://localhost:3000. Before pushing, check it with:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run lint
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Update the content
 
-## Learn More
+All the text lives in `src/content/`, so most updates only touch one file:
 
-To learn more about Next.js, take a look at the following resources:
+| File | What it holds |
+|---|---|
+| `site.ts` | Name, links, photo, navigation, home page stats |
+| `work.ts` | TestGrid case studies |
+| `projects.ts` | Personal projects |
+| `experience.ts` | Timeline, TestGrid work, education, certifications |
+| `research.ts` | Research projects |
+| `toolkit.ts` | Skills |
+| `capabilities.ts` | "What I do" cards |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Adding an entry to `work.ts` creates its page and sitemap entry automatically. In `projects.ts`, a project only gets a case study page if it has `sections`. Add `repo` or `live` to show those links.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Keep client names and internal details out of everything here, because this repo and the site are both public.
 
-## Deploy on Vercel
+## Project layout
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `src/app/` holds the pages, the contact form action and the SEO files
+- `src/components/` holds the header, footer and shared pieces
+- `src/app/globals.css` holds the colours, fonts and glass styles. The two accent colours are `--color-accent` and `--color-accent-alt`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contact form
+
+The form sends email through [Resend](https://resend.com). Copy `.env.example` to `.env.local` and set `RESEND_API_KEY` and `CONTACT_EMAIL`. Add the same values in Vercel for the live site.
+
+## Deploy
+
+Pushing to `main` deploys to production straight away through `.github/workflows/vercel-deploy.yml`. That workflow doesn't run lint or a build check first, so run them locally.
 
 This portfolio tested using [TestGrid.io](https://testgrid.io)
