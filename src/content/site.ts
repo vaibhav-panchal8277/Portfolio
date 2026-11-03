@@ -4,10 +4,10 @@ export const site = {
   description:
     "AI/ML Developer at TestGrid working on the vision models and tooling behind CoTester. Python, computer vision, LLM systems and AI agent testing.",
   url: "https://portfolio-4gke.vercel.app",
-  location: "Navsari, Gujarat",
   email: "vaibhavpanchal1808@gmail.com",
   github: "https://github.com/vaibhav-panchal8277",
   linkedin: "https://www.linkedin.com/in/vaibhav-panchal-7a2381221/",
+  blog: "https://medium.com/@vaibhavpanchal1808",
   resume: "/Vaibhav_Panchal_Resume.pdf",
   // A square file in public/. Set to null to fall back to the VP monogram.
   photo: "/vaibhav-photo.jpg" as string | null,

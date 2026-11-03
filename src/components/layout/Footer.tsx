@@ -6,7 +6,7 @@ export default function Footer() {
       <span>
         © {site.year} {site.name}
       </span>
-      <span>{site.location}, India</span>
+      <span>Gujarat, India</span>
     </footer>
   );
 }

@@ -6,6 +6,7 @@ const links = [
   { label: "Email", value: site.email, href: `mailto:${site.email}` },
   { label: "GitHub", value: "vaibhav-panchal8277", href: site.github },
   { label: "LinkedIn", value: "vaibhav-panchal", href: site.linkedin },
+  { label: "Medium", value: "@vaibhavpanchal1808", href: site.blog },
   { label: "Resume", value: "PDF", href: site.resume },
 ];
 

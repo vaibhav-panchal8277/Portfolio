@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
+import DatedRow from "@/components/shared/DatedRow";
 import PageHeader from "@/components/shared/PageHeader";
+import Panel from "@/components/shared/Panel";
 import PipelineStrip from "@/components/shared/PipelineStrip";
+import SectionHeader from "@/components/shared/SectionHeader";
 import SlashList from "@/components/shared/SlashList";
 import { research } from "@/content/research";
+import { site } from "@/content/site";
+import { posts } from "@/content/writing";
 
 export const metadata: Metadata = {
   title: "Research",
-  description: "Research in oriented object detection and hybrid intrusion detection.",
+  description:
+    "Research in oriented object detection and hybrid intrusion detection, plus writing on AI agents.",
   alternates: { canonical: "/research" },
 };
 
@@ -52,6 +58,29 @@ export default function ResearchPage() {
             )}
           </article>
         ))}
+      </section>
+
+      <section id="writing" className="page section scroll-mt-24">
+        <SectionHeader
+          index="01"
+          label="Writing"
+          intro="Notes on building and testing AI systems, on Medium."
+        />
+        <Panel>
+          {posts.map((post) => (
+            <DatedRow key={post.url} label={post.date}>
+              <h3 className="text-lg">
+                <a href={post.url} className="hover:text-accent">
+                  {post.title}
+                </a>
+              </h3>
+              <p className="mt-1 max-w-[68ch] text-muted-strong">{post.summary}</p>
+            </DatedRow>
+          ))}
+        </Panel>
+        <a href={site.blog} className="pill mt-6">
+          All posts on Medium
+        </a>
       </section>
     </>
   );

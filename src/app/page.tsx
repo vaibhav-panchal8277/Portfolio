@@ -11,6 +11,7 @@ import Toolkit from "@/components/shared/Toolkit";
 import { capabilities } from "@/content/capabilities";
 import { projects } from "@/content/projects";
 import { research } from "@/content/research";
+import { posts } from "@/content/writing";
 import { featuredSlugs, work } from "@/content/work";
 
 const featured = featuredSlugs.flatMap((slug) => work.filter((item) => item.slug === slug));
@@ -71,7 +72,7 @@ export default function Home() {
       </section>
 
       <section className="page section">
-        <SectionHeader index="05" label="Research" />
+        <SectionHeader index="05" label="Research and writing" />
         <Panel>
           {research.map((item) => (
             <DatedRow key={item.id} label={item.status}>
@@ -85,8 +86,18 @@ export default function Home() {
               </p>
             </DatedRow>
           ))}
+          {posts.slice(0, 1).map((post) => (
+            <DatedRow key={post.url} label={`Article · ${post.date}`}>
+              <h3 className="text-lg">
+                <a href={post.url} className="hover:text-accent">
+                  {post.title}
+                </a>
+              </h3>
+              <p className="mt-1 text-muted-strong">On Medium</p>
+            </DatedRow>
+          ))}
         </Panel>
-        <MoreLink href="/research">All research</MoreLink>
+        <MoreLink href="/research">All research and writing</MoreLink>
       </section>
 
       <section className="page section">
