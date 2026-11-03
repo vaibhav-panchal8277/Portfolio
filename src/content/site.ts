@@ -10,7 +10,7 @@ export const site = {
   linkedin: "https://www.linkedin.com/in/vaibhav-panchal-7a2381221/",
   resume: "/Vaibhav_Panchal_Resume.pdf",
   // A square file in public/. Set to null to fall back to the VP monogram.
-  photo: "/vaibhav.jpg" as string | null,
+  photo: "/vaibhav-photo.jpg" as string | null,
   year: 2026,
 };
 
