@@ -33,7 +33,10 @@ const story = [
   },
   {
     heading: "Outside the work",
-    body: ["I play chess, and I like games, music, movies and learning new technologies."],
+    body: [
+      "During my M.E. I mentored B.E. students in computer science subjects, and I volunteered at college tech events and coding quizzes.",
+      "Away from the desk I play chess and video games, listen to music and keep exploring new technologies.",
+    ],
   },
 ];
 

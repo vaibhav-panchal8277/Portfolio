@@ -168,7 +168,6 @@ export const work: WorkItem[] = [
         heading: "From testing to evaluation",
         body: [
           "Manual testing shows a problem exists. Evaluation shows whether a change made things better. I am exploring evaluation frameworks for AI agents so the CoTester pipeline can be analysed that way.",
-          "I also prototyped an LLM-assisted module that generates test cases through the OpenAI API, to cut down on repetitive test writing.",
         ],
       },
     ],
@@ -178,9 +177,9 @@ export const work: WorkItem[] = [
     title: "Finding elements by image",
     eyebrow: "TestGrid · Mobile automation",
     summary:
-      "Some elements can only be found by what they look like. I worked on the tool that locates them from a reference image, so a test can tap them.",
+      "Some elements can only be found by what they look like. I worked on the tool that locates them from a reference image, so a test can tap them, and cut its processing time by about 85%.",
     bullets: [
-      "Worked on the tool's performance and shipped a new release",
+      "Cut the tool's processing time by about 85% and shipped a new release",
       "Fixed a missing-element bug raised in the bug sheet",
       "Added a time boost for faster image generation in a later release",
     ],
@@ -204,7 +203,7 @@ export const work: WorkItem[] = [
         list: [
           {
             lead: "Performance.",
-            text: "I worked on how the tool performs and built a new version from it.",
+            text: "I worked on how the tool performs and cut its processing time by about 85%, then built a new version from it.",
           },
           {
             lead: "A missing element.",

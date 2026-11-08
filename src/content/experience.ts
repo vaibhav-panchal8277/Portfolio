@@ -39,7 +39,7 @@ export const testgridThemes = [
       "Built a FastAPI application to support the new model",
       "Resolved an issue in the model by integrating a vision-language model",
       "Improved detection with icon naming in ONNX and two-pass OCR",
-      "Shipped two releases of the image-based tap locator, covering performance, a missing-element fix and faster image generation",
+      "Cut processing time of the image-based tap locator by about 85% and fixed missing-element defects reported by users",
     ],
   },
   {
@@ -59,15 +59,7 @@ export const testgridThemes = [
       "Tested the new VLM release with CoTester using advanced mapping",
       "Checked the demo environment and wrote test-case collections for a new code analysis agent",
       "Exploring evaluation frameworks for AI agents to analyse the CoTester pipeline",
-    ],
-  },
-  {
-    title: "Model serving and prototypes",
-    items: [
-      "Engineered deep learning inference pipelines for automated UI regression detection",
-      "Deployed Flask model-serving endpoints in the CI/CD pipeline, with Nginx as reverse proxy",
-      "Prototyped an LLM-assisted test case generation module using the OpenAI API",
-      "Researching how to run CoTester on a local model",
+      "Researching how to run CoTester on a local model, to rely less on external APIs",
     ],
   },
   {
@@ -86,7 +78,7 @@ export const earlierRoles = [
     org: "Techreale Pvt. Ltd., Valsad",
     items: [
       "Delivered production features for the Famyll healthcare platform across claim management, auth flows and real-time communication",
-      "Reduced API response bugs by refactoring async integration patterns across 3 sprint cycles",
+      "Reduced API response bugs by refactoring async integration patterns, across 3 sprint cycles in an Agile team of 8",
     ],
   },
 ];
@@ -136,5 +128,9 @@ export const certifications: {
     year: "2022",
     href: "https://github.com/vaibhav-panchal8277/e-Hajiri-Master",
   },
-  { title: "Dev-o-lution Hackathon: certificate of participation", issuer: "Hackathon" },
+  {
+    title: "Dev-o-lution Hackathon: certificate of participation for a solution built in 24 hours",
+    issuer: "Hackathon",
+    year: "2025",
+  },
 ];

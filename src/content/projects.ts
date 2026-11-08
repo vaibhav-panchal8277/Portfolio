@@ -18,7 +18,7 @@ export const projects: Project[] = [
     bullets: [
       "LangGraph supervisor routing to Billing, Technical and Refund sub-agents",
       "NeMo Guardrails at 100% precision and recall on a labeled safety set",
-      "23 of 23 end-to-end tests passing, at about 5.4s median guarded response",
+      "100% end-to-end accuracy, at about 5.4s median guarded response",
     ],
     tags: ["Python", "LangGraph", "FastAPI", "MongoDB", "NeMo Guardrails", "Langfuse", "Pytest"],
     cover: [
@@ -37,13 +37,14 @@ export const projects: Project[] = [
       {
         heading: "Keeping it safe",
         body: [
-          "NeMo Guardrails sit on both the input and the output. On a labeled safety set they reached 100% precision and recall, with a 0% false-positive rate and about 1.8s of added overhead.",
+          "NVIDIA NeMo Guardrails sit on both the input and the output, blocking jailbreaks, prompt injection, off-topic and unsafe messages. On a labeled safety set they reached 100% precision and recall, with a 0% false-positive rate and about 1.8s of added overhead per turn.",
         ],
       },
       {
         heading: "Measuring it",
         body: [
-          "Routing, tool selection and guardrails were all evaluated end to end, with 23 of 23 tests passing and a median guarded response time of about 5.4s. Langfuse tracing and a Pytest suite make those checks repeatable.",
+          "Routing, tool selection and guardrail decisions were evaluated end to end with 100% accuracy and a median guarded response time of about 5.4s. Automated end-to-end and evaluation harnesses back that up, with 23 of 23 backend tests passing.",
+          "Every turn is traced with Langfuse, and a real-time dashboard shows each agent hop and tool call. A Pytest suite, 21 of 21 passing, keeps the system reliable as it changes.",
         ],
       },
     ],
@@ -59,9 +60,9 @@ export const projects: Project[] = [
     bullets: [
       "Hybrid retrieval with Pinecone and BM25 through Reciprocal Rank Fusion",
       "A 45-question RAGAS golden set with a FastAPI evaluation endpoint",
-      "Deployed with API auth, non-root containers and CI checks",
+      "Grounded refusals for out-of-scope questions, and Langfuse tracing throughout",
     ],
-    tags: ["Python", "FastAPI", "React", "Pinecone", "Langfuse", "RAGAS", "BM25", "Groq"],
+    tags: ["Python", "FastAPI", "React", "Pinecone", "Langfuse", "RAGAS", "BM25", "Groq", "MongoDB"],
     cover: [
       { label: "Question", sub: "user query" },
       { label: "Dense", sub: "Pinecone, MiniLM" },
@@ -78,13 +79,14 @@ export const projects: Project[] = [
       {
         heading: "Evaluation",
         body: [
-          "A 45-question RAGAS golden set scores faithfulness, answer relevancy and context precision. A FastAPI endpoint runs the evaluation and a React dashboard shows the results, so a change can be checked before it ships.",
+          "A 45-question RAGAS golden set scores faithfulness, answer relevancy and context precision. A FastAPI endpoint runs the evaluation and a React dashboard backed by MongoDB shows the results, so a change can be checked before it ships. Langfuse traces both retrieval and generation.",
         ],
       },
       {
-        heading: "Deployment",
+        heading: "Safety and deployment",
         body: [
-          "Prompt-injection filtering sits in front of retrieval. The service runs with API auth, non-root containers and CI checks.",
+          "Prompt-injection and jailbreak filtering sits in front of retrieval. Out-of-scope questions still go through RAG, so the system gives a grounded refusal instead of a canned reply.",
+          "The service runs with API auth, upload limits and non-root containers. CI checks cover linting, compilation and integration tests.",
         ],
       },
     ],
@@ -94,7 +96,7 @@ export const projects: Project[] = [
     title: "ExamForge",
     eyebrow: "Personal · LLM tooling",
     summary:
-      "An end-to-end RAG pipeline that turns syllabus PDFs into structured question papers, with configurable difficulty and Bloom's taxonomy tagging.",
+      "An end-to-end RAG pipeline that turns syllabus PDFs into structured question papers, with configurable difficulty and Bloom's taxonomy tagging. In pilot use it cut manual question-drafting time by about 80%.",
     problem:
       "Educators spend hours drafting test questions that match a specific curriculum and difficulty level.",
     bullets: [
@@ -120,7 +122,7 @@ export const projects: Project[] = [
       "People want recommendations based on what a film is actually like, not generic popularity lists.",
     bullets: [
       "TF-IDF vectorization and cosine similarity over the TMDB 5000 dataset",
-      "Real-time recommendations through a Streamlit app",
+      "Real-time recommendations in a Streamlit app, with sub-second latency",
       "Collaborative filtering or hybrid approaches can be added without restructuring the serving layer",
     ],
     tags: ["Python", "Scikit-learn", "TF-IDF", "Cosine Similarity", "Streamlit"],
