@@ -17,7 +17,7 @@ export const capabilities = [
   },
   {
     title: "Serving models",
-    body: "FastAPI and Flask services that put a model behind an API, with Docker and Nginx around them.",
+    body: "FastAPI services that put a model behind an API, with Docker, Nginx and CI around them.",
   },
   {
     title: "Tools that are easy to debug",
