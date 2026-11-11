@@ -6,7 +6,12 @@ export default function Footer() {
       <span>
         © {site.year} {site.name}
       </span>
-      <span>Gujarat, India</span>
+      <span>
+        Gujarat, India · Design inspired by{" "}
+        <a href="https://aahil-khan.xyz" className="hover:text-fg">
+          aahil-khan.xyz
+        </a>
+      </span>
     </footer>
   );
 }

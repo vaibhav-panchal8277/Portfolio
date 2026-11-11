@@ -2,7 +2,9 @@ import type { Metadata, Viewport } from "next";
 import { Inter_Tight, JetBrains_Mono, Newsreader } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import SiteMotion from "@/components/layout/SiteMotion";
 import { site } from "@/content/site";
+import { themeScript } from "@/lib/theme";
 import "./globals.css";
 
 const interTight = Inter_Tight({
@@ -42,7 +44,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0a0a0b",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f4f5fb" },
+    { media: "(prefers-color-scheme: dark)", color: "#0b0c14" },
+  ],
 };
 
 export default function RootLayout({
@@ -53,8 +58,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-theme="dark"
+      suppressHydrationWarning
       className={`${interTight.variable} ${jetbrainsMono.variable} ${newsreader.variable}`}
     >
+      <head>
+        {/* Sets the saved theme before first paint, so a light-theme visitor never sees a dark flash. */}
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body>
         <a
           href="#content"
@@ -62,9 +73,11 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <Header />
-        <main id="content">{children}</main>
-        <Footer />
+        <SiteMotion>
+          <Header />
+          <main id="content">{children}</main>
+          <Footer />
+        </SiteMotion>
       </body>
     </html>
   );

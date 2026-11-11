@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import DatedRow from "@/components/shared/DatedRow";
+import Expandable from "@/components/shared/Expandable";
 import PageHeader from "@/components/shared/PageHeader";
 import Panel from "@/components/shared/Panel";
 import SectionHeader from "@/components/shared/SectionHeader";
@@ -34,12 +35,11 @@ export default function ExperiencePage() {
         <div className="glass rise p-6 md:p-8">
           <p className="eyebrow">May 2026 to now · Navsari, Gujarat</p>
           <h3 className="mt-3 text-xl">AI/ML Developer</h3>
-          <div className="mt-6 grid gap-x-10 gap-y-8 md:grid-cols-2">
+          <div className="mt-4 divide-y divide-line">
             {testgridThemes.map((theme) => (
-              <div key={theme.title}>
-                <h4 className="mono-label text-muted-strong">{theme.title}</h4>
-                <SlashList items={theme.items} className="mt-3 text-muted-strong" />
-              </div>
+              <Expandable key={theme.title} title={theme.title} summary={theme.summary} heading="h4">
+                <SlashList items={theme.items} className="text-muted-strong" />
+              </Expandable>
             ))}
           </div>
         </div>
@@ -50,9 +50,9 @@ export default function ExperiencePage() {
         <Panel as="ol">
           {earlierRoles.map((role) => (
             <DatedRow key={role.role} label={role.date}>
-              <h3 className="text-lg">{role.role}</h3>
-              <p className="text-muted-strong">{role.org}</p>
-              <SlashList items={role.items} className="mt-3 text-muted-strong" />
+              <Expandable title={role.role} org={role.org} summary={role.summary} className="">
+                <SlashList items={role.items} className="text-muted-strong" />
+              </Expandable>
             </DatedRow>
           ))}
         </Panel>
@@ -70,9 +70,14 @@ export default function ExperiencePage() {
             </DatedRow>
           ))}
           <DatedRow label={internship.date}>
-            <h3 className="text-lg">{internship.role}</h3>
-            <p className="text-muted-strong">{internship.org}</p>
-            <SlashList items={internship.items} className="mt-3 text-muted-strong" />
+            <Expandable
+              title={internship.role}
+              org={internship.org}
+              summary={internship.summary}
+              className=""
+            >
+              <SlashList items={internship.items} className="text-muted-strong" />
+            </Expandable>
           </DatedRow>
         </Panel>
       </section>

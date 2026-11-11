@@ -24,8 +24,8 @@ export default async function OpenGraphImage() {
         alignItems: "center",
         gap: 64,
         padding: "0 90px",
-        background: "linear-gradient(180deg, #070a14 0%, #10172e 60%, #2b2547 100%)",
-        color: "#ededec",
+        background: "linear-gradient(180deg, #07081a 0%, #121a42 60%, #2c2a5c 100%)",
+        color: "#ecedf5",
       }}
     >
       {photo && (
@@ -34,11 +34,11 @@ export default async function OpenGraphImage() {
           alt=""
           width={300}
           height={300}
-          style={{ borderRadius: 9999, border: "6px solid #f2a93b", objectFit: "cover" }}
+          style={{ borderRadius: 9999, border: "6px solid #ffc861", objectFit: "cover" }}
         />
       )}
       <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
-        <div style={{ display: "flex", fontSize: 30, color: "#f2a93b", letterSpacing: 1 }}>
+        <div style={{ display: "flex", fontSize: 30, color: "#ffc861", letterSpacing: 1 }}>
           {site.title} at TestGrid
         </div>
         <div style={{ display: "flex", marginTop: 14, fontSize: 80, fontWeight: 700, lineHeight: 1 }}>
@@ -51,7 +51,7 @@ export default async function OpenGraphImage() {
             marginTop: 26,
             fontSize: 38,
             lineHeight: 1.25,
-            color: "#c9c9cc",
+            color: "#c9cbe0",
           }}
         >
           <span>I test AI until it breaks,</span>
@@ -66,15 +66,15 @@ export default async function OpenGraphImage() {
                 padding: "8px 18px",
                 fontSize: 24,
                 borderRadius: 9999,
-                border: "2px solid #3a3d52",
-                color: "#c8f751",
+                border: "2px solid #3a3f6b",
+                color: "#8b9cff",
               }}
             >
               {item}
             </div>
           ))}
         </div>
-        <div style={{ display: "flex", marginTop: 34, fontSize: 24, color: "#8a8a8f" }}>
+        <div style={{ display: "flex", marginTop: 34, fontSize: 24, color: "#8b8ea3" }}>
           {site.url.replace("https://", "")}
         </div>
       </div>

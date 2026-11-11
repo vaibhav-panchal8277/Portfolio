@@ -24,19 +24,19 @@ const tiles: { href: string; label: string; icon: LucideIcon; tilt: string; plac
 export default function Hero() {
   return (
     <section className="page grid gap-4 pt-6">
-      <div className="stage grid min-h-[clamp(27rem,62svh,35rem)] place-items-center px-6 py-14 text-center">
+      <div data-hero className="stage grid min-h-[clamp(27rem,62svh,35rem)] place-items-center px-6 py-14 text-center">
         <Scene detect />
         <div className="scrim" />
 
-        <div className="grid max-w-[40rem] justify-items-center">
-          <div className="mb-4">
+        <div data-hero-inner className="grid max-w-[40rem] justify-items-center">
+          <div data-intro="avatar" className="mb-4">
             <Avatar size={56} />
           </div>
           <h1 className="mb-6">
-            <span className="eyebrow mb-4 block">
+            <span data-intro="eyebrow" className="eyebrow mb-4 block">
               {site.name} · {site.title}
             </span>
-            <span className="display-text mx-auto block max-w-[17ch] text-hero">
+            <span data-intro="title" className="display-text mx-auto block max-w-[17ch] text-hero">
               I test AI until it breaks, then{" "}
               <em className="font-accent font-normal tracking-[-0.01em] text-accent">
                 make it hold up
@@ -44,7 +44,7 @@ export default function Hero() {
               .
             </span>
           </h1>
-          <p className="max-w-[56ch] text-md text-fg/85">
+          <p data-intro="lede" className="max-w-[56ch] text-md text-fg/85">
             AI/ML Developer at TestGrid. I work on the vision models and tools behind
             CoTester, and I spend a lot of my time finding where AI agents fail. Python, computer
             vision and LLM systems.
@@ -52,7 +52,7 @@ export default function Hero() {
 
           <ul className="mt-8 flex justify-center gap-2 lg:contents">
             {tiles.map((tile) => (
-              <li key={tile.href} className={`lg:absolute ${tile.place}`}>
+              <li key={tile.href} data-intro="tile" className={`lg:absolute ${tile.place}`}>
                 <Link
                   href={tile.href}
                   aria-label={tile.label}

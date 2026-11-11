@@ -5,18 +5,18 @@ const WIDTH = 1100;
 const HEIGHT = 560;
 
 const skyStops = [
-  { offset: "0%", color: "#070a14" },
-  { offset: "34%", color: "#10203a" },
-  { offset: "54%", color: "#2f3a5e" },
-  { offset: "66%", color: "#8a5a45" },
-  { offset: "74%", color: "#e0963f" },
+  { offset: "0%", color: "#07081a" },
+  { offset: "34%", color: "#121a42" },
+  { offset: "54%", color: "#2c3170" },
+  { offset: "66%", color: "#6b4f6e" },
+  { offset: "74%", color: "#e5a24a" },
 ];
 
 const ridges = [
-  { baseY: 398, amp: 30, color: "#5a3f4f" },
-  { baseY: 432, amp: 28, color: "#3a2c45" },
-  { baseY: 470, amp: 24, color: "#221d35" },
-  { baseY: 510, amp: 18, color: "#100f1f" },
+  { baseY: 398, amp: 30, color: "#4b3f6b" },
+  { baseY: 432, amp: 28, color: "#342d57" },
+  { baseY: 470, amp: 24, color: "#211d3d" },
+  { baseY: 510, amp: 18, color: "#0f0e22" },
 ];
 
 function seeded(seed: number) {
@@ -97,8 +97,8 @@ export default function Scene({ seed = 7, detect = false }: { seed?: number; det
           ))}
         </linearGradient>
         <radialGradient id={`${id}-glow`} cx="50%" cy="100%" r="62%">
-          <stop offset="0%" stopColor="#f2a93b" stopOpacity="0.32" />
-          <stop offset="100%" stopColor="#f2a93b" stopOpacity="0" />
+          <stop offset="0%" stopColor="#ffc861" stopOpacity="0.3" />
+          <stop offset="100%" stopColor="#ffc861" stopOpacity="0" />
         </radialGradient>
       </defs>
 
@@ -111,13 +111,13 @@ export default function Scene({ seed = 7, detect = false }: { seed?: number; det
           cx={star.x.toFixed(1)}
           cy={star.y.toFixed(1)}
           r={star.r.toFixed(2)}
-          fill="#ededec"
+          fill="#ecedf5"
           opacity={star.o.toFixed(2)}
         />
       ))}
 
       <circle cx="860" cy="212" r="30" fill="#e9dfc9" opacity="0.92" />
-      <circle cx="848" cy="204" r="26" fill="#10172e" opacity="0.18" />
+      <circle cx="848" cy="204" r="26" fill="#121a42" opacity="0.18" />
 
       {ridges.map((ridge) => (
         <path

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { nav } from "@/content/site";
+import ThemeToggle from "./ThemeToggle";
 
 export default function NavLinks() {
   const pathname = usePathname();
@@ -66,6 +67,9 @@ export default function NavLinks() {
               </Link>
             </li>
           ))}
+          <li className="border-t border-line pt-1">
+            <ThemeToggle label className="w-full rounded-card px-3 py-3" />
+          </li>
         </ul>
       )}
     </nav>

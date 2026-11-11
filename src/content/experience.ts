@@ -34,6 +34,7 @@ export const timeline = [
 export const testgridThemes = [
   {
     title: "Vision and mobile automation",
+    summary: "An in-house vision pipeline that replaced a hosted API, and an image-based element detector made about 85% faster.",
     items: [
       "Researched and designed a new vision model, with its library and methods, to replace a hosted vision API",
       "Built a FastAPI application to support the new model",
@@ -44,6 +45,7 @@ export const testgridThemes = [
   },
   {
     title: "Device tunnel",
+    summary: "Logs, warnings and usage tracking for a secure tunneling product, plus client fixes and releases.",
     items: [
       "Reviewed the project and added server-side logs that match what the user sees",
       "Added overload warnings in the user's terminal and on their screen through an API",
@@ -53,6 +55,7 @@ export const testgridThemes = [
   },
   {
     title: "Agent testing and evaluation",
+    summary: "Testing new CoTester releases and features, and building the evaluation work around them.",
     items: [
       "Ran development testing on CoTester 9.0",
       "Tested the autoheal, keyword and popup-handling features through their APIs in Postman",
@@ -64,6 +67,7 @@ export const testgridThemes = [
   },
   {
     title: "Supporting the team",
+    summary: "Demo repositories, a test-element portal and a technical review.",
     items: [
       "Built demo repositories and a test-element portal to support the sales team",
       "Reviewed a technical blog post before publication",
@@ -76,6 +80,7 @@ export const earlierRoles = [
     date: "Jan to Apr 2024",
     role: "Trainee Associate Software Developer",
     org: "Techreale Pvt. Ltd., Valsad",
+    summary: "Production features for the Famyll healthcare platform in React.js, Node.js and MongoDB.",
     items: [
       "Delivered production features for the Famyll healthcare platform across claim management, auth flows and real-time communication",
       "Reduced API response bugs by refactoring async integration patterns, across 3 sprint cycles in an Agile team of 8",
@@ -87,6 +92,7 @@ export const internship = {
   date: "Jul 2023",
   role: "Summer Intern, Frontend Development (React)",
   org: "INFOLABZ IT Services Pvt. Ltd., Ahmedabad",
+  summary: "React.js dashboard components with async API integration.",
   items: [
     "Developed and optimized React.js dashboard components with async API integration",
     "Improved rendering performance through targeted component-level refactoring",

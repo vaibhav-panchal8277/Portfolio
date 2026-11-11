@@ -8,14 +8,14 @@
 
 @theme {
   --color-*: initial;
-  --color-bg: #0a0a0b;
-  --color-surface: #121214;
-  --color-line: #232326;
-  --color-fg: #ededec;
-  --color-muted: #8a8a8f;
-  --color-muted-strong: #a8a8ad;
-  --color-accent: #f2a93b;
-  --color-accent-alt: #c8f751;
+  --color-bg: #0b0c14;
+  --color-surface: #12141f;
+  --color-line: #23263a;
+  --color-fg: #ecedf5;
+  --color-muted: #8b8ea3;
+  --color-muted-strong: #a9acc0;
+  --color-accent: #8b9cff;
+  --color-accent-alt: #ffc861;
 
   --text-2xs: 0.6875rem;
   --text-xs: 0.75rem;
@@ -42,6 +42,38 @@
   --glass-highlight: color-mix(in srgb, var(--color-fg) 7%, transparent);
   --ease: cubic-bezier(0.2, 0, 0.2, 1);
   color-scheme: dark;
+}
+
+/* Light theme. The night-sky stages keep the dark tokens below, so the illustration and the
+   text on it read the same in both themes. */
+:root[data-theme="light"] {
+  --color-bg: #f4f5fb;
+  --color-surface: #ffffff;
+  --color-line: #e0e2ee;
+  --color-fg: #16172a;
+  --color-muted: #6a6d85;
+  --color-muted-strong: #474a63;
+  --color-accent: #3f51d6;
+  --color-accent-alt: #a06400;
+  --shadow-glass: 0 12px 32px #161a3c14;
+  --glass-tint: color-mix(in srgb, var(--color-surface) 78%, transparent);
+  --glass-edge: color-mix(in srgb, var(--color-fg) 10%, transparent);
+  --glass-highlight: color-mix(in srgb, #ffffff 70%, transparent);
+  color-scheme: light;
+}
+
+:root[data-theme="light"] .stage {
+  --color-bg: #0b0c14;
+  --color-surface: #12141f;
+  --color-fg: #ecedf5;
+  --color-muted: #8b8ea3;
+  --color-muted-strong: #a9acc0;
+  --color-accent: #8b9cff;
+  --color-accent-alt: #ffc861;
+  --glass-tint: color-mix(in srgb, #12141f 82%, transparent);
+  --glass-edge: color-mix(in srgb, #ecedf5 12%, transparent);
+  --glass-highlight: color-mix(in srgb, #ecedf5 7%, transparent);
+  color: var(--color-fg);
 }
 
 @layer base {
@@ -72,9 +104,9 @@
     z-index: -1;
     pointer-events: none;
     background:
-      radial-gradient(38rem 30rem at 12% 8%, #f2a93b14, transparent 70%),
-      radial-gradient(34rem 28rem at 90% 40%, #788cff14, transparent 70%),
-      radial-gradient(36rem 30rem at 20% 92%, #c8f75110, transparent 70%);
+      radial-gradient(38rem 30rem at 12% 8%, #8b9cff16, transparent 70%),
+      radial-gradient(34rem 28rem at 90% 40%, #ffc86110, transparent 70%),
+      radial-gradient(36rem 30rem at 20% 92%, #6f7dff12, transparent 70%);
   }
 
   * {
@@ -97,7 +129,7 @@
   }
 
   ::selection {
-    background: #f2a93b4d;
+    background: #8b9cff4d;
   }
 }
 
@@ -252,26 +284,24 @@
   background-size: 16px 16px;
 }
 
-@keyframes rise {
-  from {
-    opacity: 0;
-    translate: 0 12px;
-  }
-  to {
-    opacity: 1;
-    translate: 0 0;
-  }
+/* `.rise` elements are revealed by SiteMotion with GSAP; without JavaScript they simply show. */
+
+/* Lenis owns smooth scrolling, so the native kind must stand down while it runs. */
+html.lenis,
+html.lenis body {
+  height: auto;
 }
 
-/* Progressive enhancement: content stays visible wherever this is unsupported. */
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .rise {
-      animation: rise linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 30%;
-    }
-  }
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+/* The header lifts once the page has scrolled. */
+[data-stuck="1"] [data-site-bar] {
+  --glass-tint: color-mix(in srgb, var(--color-surface) 92%, transparent);
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    0 16px 48px #00000073;
 }
 
 @media (prefers-reduced-motion: reduce) {
