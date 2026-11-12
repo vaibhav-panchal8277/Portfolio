@@ -82,7 +82,7 @@ export const projects: Project[] = [
       {
         heading: "Evaluation",
         body: [
-          "A 45-question RAGAS golden set scores faithfulness, answer relevancy and context precision. A FastAPI endpoint runs the evaluation and a React dashboard backed by MongoDB shows the results, so a change can be checked before it ships. Langfuse traces both retrieval and generation, with the RAGAS scores attached to each trace.",
+          "A 45-question RAGAS golden set scores faithfulness, answer relevancy and context precision. A FastAPI endpoint runs the evaluation and a React dashboard backed by MongoDB shows the results, so a change can be checked before it ships. Langfuse traces both retrieval and generation.",
         ],
       },
       {
