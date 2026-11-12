@@ -12,13 +12,13 @@ export const projects: Project[] = [
     title: "MESH Support",
     eyebrow: "Personal · Multi-agent system",
     summary:
-      "A multi-agent customer support platform where a supervisor routes each query to the right specialist, with guardrails around every message.",
+      "A multi-agent customer support platform where a supervisor routes each query to the right specialist, with fail-closed guardrails and access control around every message.",
     problem:
       "Customer support queries need intelligent routing, preserved context and safety guardrails across several specialized agents.",
     bullets: [
-      "LangGraph supervisor routing to Billing, Technical and Refund sub-agents",
-      "Guardrails at 100% precision and recall, with 0% false positives, on a 35-message safety set",
-      "100% end-to-end accuracy on a 20-case suite run through the live API",
+      "LangGraph supervisor routing to Billing, Technical and Refund sub-agents, with a loop guard",
+      "Guardrails at 100% precision and recall, with 0% false positives, on a 35-message safety set in two runs",
+      "97.5% end-to-end accuracy (39 of 40) across two runs of a 20-case live-API suite",
     ],
     tags: ["Python", "LangGraph", "FastAPI", "MongoDB", "NeMo Guardrails", "Langfuse", "Pytest"],
     repo: "https://github.com/vaibhav-panchal8277/Multi-Agent-Customer-Support-System",
@@ -32,21 +32,22 @@ export const projects: Project[] = [
       {
         heading: "What it does",
         body: [
-          "A LangGraph supervisor agent reads each query and routes it to a Billing, Technical or Refund sub-agent. Each sub-agent has its own prompts, tools and memory. The system runs on FastAPI and MongoDB, with Groq's gpt-oss-120b as the model.",
-          "When the supervisor isn't confident about a query, it asks a clarifying question instead of guessing. Hand-offs between agents pass a short summary rather than the whole conversation.",
+          "A LangGraph supervisor agent reads each query and routes it to a Billing, Technical or Refund sub-agent. Each sub-agent has its own prompts and its own set of tools. The system runs on FastAPI and MongoDB, with Groq's gpt-oss-120b as the model.",
+          "When the supervisor isn't confident about a query, it asks a clarifying question instead of guessing. Hand-offs between agents pass a short summary rather than the whole conversation, and a loop guard stops agents handing a query back and forth.",
         ],
       },
       {
         heading: "Keeping it safe",
         body: [
-          "NVIDIA NeMo Guardrails sit on both the input and the output, blocking jailbreaks, prompt injection, off-topic and unsafe messages. On a labeled set of 35 messages, 25 checked by the input rail and 10 by the output rail, they reached 100% precision and recall with a 0% false-positive rate, adding about 1.8s per turn.",
+          "Access is checked on the server, never left to the model. Each session has its own access key, and the admin dashboard needs a separate server-side token. The customer's identity is verified before any invoice or refund lookup, and a refund only executes when the customer explicitly confirms it.",
+          "NVIDIA NeMo Guardrails sit on both the input and the output, blocking jailbreaks, prompt injection, off-topic and unsafe messages. Both rails fail closed. The input rail runs in parallel with the agents, which cannot run any tool until it passes. On a labeled set of 35 messages, 25 checked by the input rail and 10 by the output rail, they reached 100% precision and recall with a 0% false-positive rate, in two independent runs.",
         ],
       },
       {
         heading: "Measuring it",
         body: [
-          "A 20-case suite drives the live API end to end. It scored 100%: every query reached the right agent, all 6 tool-call cases used the right tool, and all 7 unsafe messages were blocked. Blocked messages are answered in about 2.5s, because the input rail stops them before any agent runs.",
-          "Every turn is traced with Langfuse, and a real-time dashboard shows each agent hop and tool call. A Pytest suite, 21 of 21 passing, and 23 of 23 backend tests keep the system reliable as it changes.",
+          "A 20-case suite drives the live API end to end. Across two runs it scored 97.5%, 39 of 40, with 100% intent classification, 100% tool-call precision and every unsafe message caught.",
+          "Every turn is traced with Langfuse, and a dashboard shows each agent hop and tool call. 23 of 23 live end-to-end tests and 127 automated offline tests, backend and frontend, keep the system reliable as it changes.",
         ],
       },
     ],
@@ -60,9 +61,9 @@ export const projects: Project[] = [
     problem:
       "RAG systems need rigorous evaluation to catch made-up answers and quality regressions before they reach production.",
     bullets: [
-      "Hybrid retrieval with Pinecone and BM25 through Reciprocal Rank Fusion",
-      "A 45-question RAGAS golden set with a FastAPI evaluation endpoint",
-      "Grounded refusals for out-of-scope questions, and Langfuse tracing throughout",
+      "Hybrid retrieval with Pinecone and BM25 through Reciprocal Rank Fusion, with a keyword fallback",
+      "A 45-question golden set scored on RAGAS, retrieval hit rate, MRR and refusal accuracy",
+      "Guardrails before retrieval, untrusted-context handling and 72 offline tests in CI",
     ],
     tags: ["Python", "FastAPI", "React", "LangChain", "Pinecone", "BM25", "RAGAS", "Langfuse", "MongoDB", "Docker"],
     repo: "https://github.com/vaibhav-panchal8277/Production-RAG-System-with-Evaluation",
@@ -76,20 +77,22 @@ export const projects: Project[] = [
       {
         heading: "Retrieval",
         body: [
-          "The system combines Pinecone with MiniLM 384-d embeddings and in-memory BM25, merged through Reciprocal Rank Fusion. If the vector store is unavailable, it falls back to keyword-only search instead of failing. Answers cite the chunks they came from.",
+          "The system combines Pinecone with MiniLM 384-d embeddings and in-memory BM25, merged through Reciprocal Rank Fusion. If the vector store is unreachable, it falls back to keyword-only search instead of failing. Answers cite the chunks they came from.",
+          "Every chunk gets a deterministic ID, so re-ingesting a document replaces it cleanly instead of duplicating it. PDF parsing, embedding and Pinecone calls run off the event loop, so one large upload doesn't stall other requests.",
         ],
       },
       {
         heading: "Evaluation",
         body: [
-          "A 45-question RAGAS golden set scores faithfulness, answer relevancy and context precision. A FastAPI endpoint runs the evaluation and a React dashboard backed by MongoDB shows the results, so a change can be checked before it ships. Langfuse traces both retrieval and generation.",
+          "Every in-scope answer is scored with RAGAS for faithfulness, answer relevancy and context precision. On the 45-question golden set, the 40 in-scope questions are also checked against reference answers for answer correctness and context recall, and against the document they should come from for retrieval hit rate and mean reciprocal rank. The 5 out-of-scope questions are scored only on whether the system correctly refuses.",
+          "Evaluations run as background jobs. Results go to MongoDB for the React dashboard, and each score is attached to its Langfuse trace, so a bad score leads straight to the retrieval and generation behind it.",
         ],
       },
       {
         heading: "Safety and deployment",
         body: [
-          "Prompt-injection and jailbreak filtering sits in front of retrieval. Out-of-scope questions still go through RAG, so the system gives a grounded refusal instead of a canned reply.",
-          "The service runs with API auth, upload limits and non-root Docker containers. GitHub Actions CI covers linting, compilation and integration tests.",
+          "Guardrails run before retrieval, so a blocked query costs no embedding or search work. Chunks containing instruction-like text are flagged at ingest, and all retrieved context reaches the model marked as untrusted data, not instructions. Out-of-scope questions still go through RAG, so the system gives a grounded refusal instead of a canned reply.",
+          "Queries and conversation history need an API key, uploads are size-limited, and containers run as non-root. GitHub Actions CI runs linting, 72 offline tests and a live integration suite in its own Pinecone namespace.",
         ],
       },
     ],
