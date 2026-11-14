@@ -48,7 +48,7 @@ export const projects: Project[] = [
         heading: "Measuring it",
         body: [
           "A 20-case suite drives the live API end to end. Across two runs it scored 97.5%, 39 of 40, with 100% intent classification, 100% tool-call precision and every unsafe message caught.",
-          "Every turn is traced with Langfuse, and a dashboard shows each agent hop and tool call. 23 of 23 live end-to-end tests and 127 automated offline tests, backend and frontend, keep the system reliable as it changes.",
+          "Every turn is traced with Langfuse, and a dashboard shows each agent hop and tool call. 23 of 23 live end-to-end tests and 137 automated offline tests (118 backend, 19 frontend) keep the system reliable as it changes.",
         ],
       },
     ],
