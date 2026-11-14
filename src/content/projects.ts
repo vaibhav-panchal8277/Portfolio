@@ -22,6 +22,7 @@ export const projects: Project[] = [
     ],
     tags: ["Python", "LangGraph", "FastAPI", "MongoDB", "NeMo Guardrails", "Langfuse", "Pytest"],
     repo: "https://github.com/vaibhav-panchal8277/Multi-Agent-Customer-Support-System",
+    live: "https://multi-agent-customer-support-system-ten.vercel.app",
     cover: [
       { label: "Customer", sub: "query" },
       { label: "Guardrails", sub: "input rails" },
@@ -67,6 +68,7 @@ export const projects: Project[] = [
     ],
     tags: ["Python", "FastAPI", "React", "LangChain", "Pinecone", "BM25", "RAGAS", "Langfuse", "MongoDB", "Docker"],
     repo: "https://github.com/vaibhav-panchal8277/Production-RAG-System-with-Evaluation",
+    live: "https://production-rag-system-with-evaluati-nine.vercel.app",
     cover: [
       { label: "Question", sub: "user query" },
       { label: "Dense", sub: "Pinecone, MiniLM" },

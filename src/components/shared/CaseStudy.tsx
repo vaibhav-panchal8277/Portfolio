@@ -43,14 +43,14 @@ export default function CaseStudy({
 
       {(item.repo || item.live) && (
         <div className="mt-10 flex flex-wrap gap-3">
+          {item.live && (
+            <a href={item.live} className="pill">
+              Live demo
+            </a>
+          )}
           {item.repo && (
             <a href={item.repo} className="pill">
               Source on GitHub
-            </a>
-          )}
-          {item.live && (
-            <a href={item.live} className="pill">
-              Live site
             </a>
           )}
         </div>

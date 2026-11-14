@@ -53,14 +53,14 @@ export default function ProjectRow({
                 Read the case study
               </Link>
             )}
+            {item.live && (
+              <a href={item.live} className="pill">
+                Live demo
+              </a>
+            )}
             {item.repo && (
               <a href={item.repo} className="pill">
                 Source on GitHub
-              </a>
-            )}
-            {item.live && (
-              <a href={item.live} className="pill">
-                Live site
               </a>
             )}
           </div>
