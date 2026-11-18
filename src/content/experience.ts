@@ -34,7 +34,7 @@ export const timeline = [
 export const testgridThemes = [
   {
     title: "Vision and mobile automation",
-    summary: "An in-house vision pipeline that replaced a hosted API, and an image-based element detector made about 85% faster.",
+    summary: "An in-house vision pipeline that replaced a hosted API, and an image-based element detector with its processing time cut by about 85%.",
     items: [
       "Researched and designed a new vision model, with its library and methods, to replace a hosted vision API",
       "Built a FastAPI application to support the new model",
