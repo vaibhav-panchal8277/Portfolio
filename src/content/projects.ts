@@ -63,7 +63,7 @@ export const projects: Project[] = [
       "RAG systems need rigorous evaluation to catch made-up answers and quality regressions before they reach production.",
     bullets: [
       "Hybrid retrieval with Pinecone and BM25 through Reciprocal Rank Fusion, with a keyword fallback",
-      "A 45-question golden set scored on RAGAS, retrieval hit rate, MRR and refusal accuracy",
+      "A 45-question golden set scored on RAGAS (with a separate judge model), retrieval hit rate, MRR and refusal accuracy",
       "Guardrails before retrieval, untrusted-context handling and 72 offline tests in CI",
     ],
     tags: ["Python", "FastAPI", "React", "LangChain", "Pinecone", "BM25", "RAGAS", "Langfuse", "MongoDB", "Docker"],
@@ -87,6 +87,7 @@ export const projects: Project[] = [
         heading: "Evaluation",
         body: [
           "Every in-scope answer is scored with RAGAS for faithfulness, answer relevancy and context precision. On the 45-question golden set, the 40 in-scope questions are also checked against reference answers for answer correctness and context recall, and against the document they should come from for retrieval hit rate and mean reciprocal rank. The 5 out-of-scope questions are scored only on whether the system correctly refuses.",
+          "RAGAS is graded by a separate judge model, GPT-OSS-20B, not the GPT-OSS-120B that writes the answers, because a model grading its own output tends to score it too kindly.",
           "Evaluations run as background jobs. Results go to MongoDB for the React dashboard, and each score is attached to its Langfuse trace, so a bad score leads straight to the retrieval and generation behind it.",
         ],
       },
