@@ -109,11 +109,11 @@ export const projects: Project[] = [
     problem:
       "Educators spend hours drafting test questions that match a specific curriculum and difficulty level.",
     bullets: [
-      "Extracts syllabus text from PDFs and uses an LLM to identify the topics",
-      "Runs on local Ollama models, fully offline, or on OpenAI models in the cloud",
-      "Enforces JSON output with a fallback parser and exports the paper as a PDF",
+      "Finds the syllabus topics with an LLM, on local Ollama models fully offline or on OpenAI models in the cloud",
+      "Parses each upload in a sandboxed process with memory, CPU and time limits, and fences syllabus text against prompt injection",
+      "Optional MongoDB accounts with Argon2id passwords and saved papers, usage caps, and 150 tests in CI with Docker",
     ],
-    tags: ["Python", "Streamlit", "OpenAI API", "Ollama", "pdfplumber", "ReportLab"],
+    tags: ["Python", "Streamlit", "OpenAI API", "Ollama", "MongoDB", "ReportLab", "Docker"],
     repo: "https://github.com/vaibhav-panchal8277/examforge",
     cover: [
       { label: "Syllabus", sub: "PDF upload" },
